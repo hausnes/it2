@@ -1,0 +1,42 @@
+html, body {
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+body { /* body er forelder til header og varer. Desse to må fylgje flexbox-reglane under. */
+    display: flex;
+    flex-direction: column; /* Barna skal ligge over kvarandre, ikkje på sida (som er standard). */ 
+}
+header { /* Barn nr. 1. */
+    font-size: 2.5em;
+    text-align: center;
+    font-family: 'Bebas Neue', cursive; /* Henta frå Google-fonts */
+}
+#varer { /* Barn nr. 2, som igjen har sine eigne barn. Desse må fylgje eigne reglar.  */
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    flex-wrap: wrap;
+}
+.vare { /* Barn av varer. */
+    width: 200px;
+    /*height: 200px;*/
+    background-color: rgb(211, 228, 255);
+    color: rgb(95, 95, 95);
+    padding: 30px;
+    border: 1px black solid;
+}
+button {
+    border: none;
+    color: white;
+    padding: 15px 32px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    margin: 4px 2px;
+    cursor: pointer;
+    background-color: #008CBA;
+}
