@@ -27,6 +27,7 @@ header { /* Barn nr. 1. */
     color: rgb(95, 95, 95);
     padding: 30px;
     border: 1px black solid;
+    margin-bottom: 20px;
 }
 button {
     border: none;
