@@ -1,0 +1,30 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    background-color: rgb(230, 230, 230);
+}
+
+#midtstilt {
+    width: 600px;
+    background-color: white;
+    color: black;
+    margin: auto;
+}
+
+#midtstilt p {
+    padding: 10px;
+}
+
+header {
+    background-color: black;
+    color: white;
+}
+
+header h1 {
+    padding: 10px;
+}
+
+.advarsel {
+    background-color: red;
+    color: white;
+}
