@@ -7,15 +7,17 @@
     <body>
         <h1>Eigenskapar ved nettlesaren m.m.</h1>
         <p id="utskrift">
-            <!-- Øv deg gjerne på å skrive data frå scriptet ut her. -->
+            <!-- Denne delen blir fyllt ut i linke 19, vha. document.getElementById ... -->
         </p>
         <p id="utskriftNettlesarInfo">
-
+            <!-- Øv deg sjølv. Fyll ut meir informasjon om nettlesaren her. Ta gjerne utg.pkt. i linjer 23-28. -->
         </p>
         <p>Sjå console.log for meir detaljar, inkl. geolokasjon.</p>
         
+        <!-- KODE: -->
         <script>
             document.getElementById("utskrift").innerHTML = "Me kan hente ut diverse eigenskapar til fana og nettlesaren som er open. Fana du har open er " + window.innerWidth + " piksler brei, og " + window.innerHeight + " piksler høg. Nettsida som er open er " + window.location + ".";
+            // Alternativ måte å gjere linja over på (neste 2 linjene): 
             //var utskrift = document.getElementById("utskrift");
             //utskrift.innerHTML = "Me kan hente ut diverse eigenskapar til fana og nettlesaren som er open. Fana du har open er " + window.innerWidth + " piksler brei, og " + window.innerHeight + " piksler høg. Nettsida som er open er " + window.location + ".";
             console.log("navigator.appName: " + navigator.appName);
