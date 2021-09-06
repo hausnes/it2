@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Eigenskapar i nettlesaren</title>
+        <meta charset="UTF-8">
+    </head>
+    <body>
+        <h1>Eigenskapar ved nettlesaren m.m.</h1>
+        <p id="utskrift">
+            <!-- Øv deg gjerne på å skrive data frå scriptet ut her. -->
+        </p> 
+        <p>Sjå console.log for meir detaljar, inkl. geolokasjon.</p>
+        
+        <script>
+            document.getElementById("utskrift").innerHTML = "Me kan hente ut diverse eigenskapar til fana og nettlesaren som er open. Fana du har open er " + window.innerWidth + " piksler brei, og " + window.innerHeight + " piksler høg. Nettsida som er open er " + window.location + ".";
+            //var utskrift = document.getElementById("utskrift");
+            //utskrift.innerHTML = "Me kan hente ut diverse eigenskapar til fana og nettlesaren som er open. Fana du har open er " + window.innerWidth + " piksler brei, og " + window.innerHeight + " piksler høg. Nettsida som er open er " + window.location + ".";
+            console.log("navigator.appName: " + navigator.appName);
+            console.log("navigator.appVersion: " + navigator.appVersion);
+            console.log("navigator.language: " + navigator.language);
+            console.log("navigator.platform: " + navigator.platform);
+            console.log("navigator.userAgent: " + navigator.userAgent);
+            console.log("navigator.cookieEnabled: " + navigator.cookieEnabled);
+
+            // Geolokasjon
+            navigator.geolocation.getCurrentPosition(showPosition);
+            function showPosition(position) {
+                console.log("Latitude: " + position.coords.latitude +
+                "Longitude: " + position.coords.longitude);
+            }
+            // Eksperimenter meir med geolocation: https://www.w3schools.com/html/tryit.asp?filename=tryhtml5_geolocation 
+
+            // Det er mykje meir du kan finne ut om nettlesaren. Søk gjerne vidare sjølv. 
+        </script>
+    </body>
+</html>
