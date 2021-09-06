@@ -4,7 +4,12 @@ html, body {
     background-color: rgb(230, 230, 230);
 }
 
-#midtstilt {
+header {
+    background-color: black;
+    color: white;
+}
+
+#midtstilt { /* # bruker me for ID, som det berre skal finnast ein for. */
     width: 600px;
     background-color: white;
     color: black;
@@ -15,16 +20,11 @@ html, body {
     padding: 10px;
 }
 
-header {
-    background-color: black;
-    color: white;
-}
-
 header h1 {
     padding: 10px;
 }
 
-.advarsel {
+.advarsel { /* . bruker me for class, som kan gjenbrukast. Forsøk sjølv: Legg denne til for ein header. */
     background-color: red;
     color: white;
 }
