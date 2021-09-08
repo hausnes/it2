@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endrer bilde</title>
+    <!-- NB: Stilark skal typisk ligge eksternt. -->
+    <style>
+        body { width: 100%; height: 100vh; display: grid; justify-content: center; align-content: center; }
+        button { padding: 20px; background-color: white; cursor: pointer;}
+        figure { margin: 40px;  width: 350px; height: 350px; }
+        main { display: flex; flex-direction: column; }
+        section { display: flex; justify-content: space-around;  }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <button id="knappEndreBilde">Endre bilde</button>
+            <button id="knappEndreStr">Endre størrelse</button>
+        </section>
+        <figure>
+            <img id="bilde" src="bileter/drop.svg" alt="" width="300px">
+        </figure>
+    </main>
+
+    <!-- NB: Koden skal typisk ligge eksternt. -->
+    <script>
+        
+    </script>
+</body>
+</html>

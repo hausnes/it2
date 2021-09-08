@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Endrer bilde</title>
+    <!-- NB: Stilark skal typisk ligge eksternt. -->
+    <style>
+        body { width: 100%; height: 100vh; display: grid; justify-content: center; align-content: center; }
+        button { padding: 20px; background-color: white; cursor: pointer;}
+        figure { margin: 40px;  width: 350px; height: 350px; }
+        main { display: flex; flex-direction: column; }
+        section { display: flex; justify-content: space-around;  }
+    </style>
+</head>
+<body>
+    <main>
+        <section>
+            <button id="knappEndreBilde">Endre bilde</button>
+            <button id="knappEndreStr">Endre størrelse</button>
+        </section>
+        <figure>
+            <img id="bilde" src="bileter/drop.svg" alt="" width="300px">
+        </figure>
+    </main>
+
+    <!-- NB: Koden skal typisk ligge eksternt. -->
+    <script>
+        let bilde = document.getElementById("bilde");
+        let knappEndreBilde = document.getElementById("knappEndreBilde");
+        let knappEndreStr = document.getElementById("knappEndreStr");
+
+        knappEndreBilde.addEventListener("click", endreBilde);
+        function endreBilde() {
+            console.log("Bildet skal no bli endra, src var frå før: " + bilde.src);
+            bilde.src = "bileter/donut.svg";
+            console.log("Bildet HAR no blitt endra, src er endra til: " + bilde.src);
+        }
+
+        knappEndreStr.addEventListener("click", endreStr);
+        function endreStr() {
+            bilde.width = bilde.width - 10; // Minskar størrelsen med 10 piksler kvar gong du trykker på knappen.
+        }
+    </script>
+</body>
+</html>
