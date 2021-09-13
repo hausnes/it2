@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Variablar</title>
+</head>
+<body>
+    <p id="utskrift">
+        <!-- Blir fyllt ut i JS. -->
+    </p>
+
+    <ul id="utskriftArray">
+        <!-- Fylles ut i JS. -->
+    </ul>
+
+    <script>
+        let navn = "Jo Bjørnar";
+        console.log("Navnet er: " + navn + "!");
+        console.log(`Navnet er ${navn}`);
+
+        let pris = 5;
+        console.log("Prisen er: " + pris);
+        console.log(parseInt("4 kr",10));
+        console.log(parseInt("1111",2));
+        console.log(parseInt("a",16));
+        //NB: Boka bruker "Number", slik: (men den er ikkje like "kraftig")
+        console.log("(Number:)" + Number("4 kr"));
+        console.log("(Number:)" + Number("4"));
+
+        // parseFloat, test denne ut.
+
+        // Boolean (true, false)
+        let skalHaRabatt = true;
+        if(skalHaRabatt) { // Alternativt: skalHaRabatt == true
+            pris = pris * 0.5;
+            //Alternativt: pris *= 0.5;
+        }
+        else {
+            pris = pris; // Egentlig unødvendig.
+        }
+
+        // (Tabellar), arrays
+        let arrayNavn = ["Jo Bjørnar","Jo Bjarne","Jo B"];
+        console.log(arrayNavn);
+        document.getElementById("utskrift").innerHTML = arrayNavn;
+
+        for(let kvartElement of arrayNavn) {
+            document.getElementById("utskriftArray").innerHTML += "<li>" + kvartElement + "</li>";
+            //document.getElementById("utskriftArray").innerHTML = document.getElementById("utskriftArray").innerHTML + "<li>" + kvartElement + "</li>";
+            console.log(kvartElement);
+        }
+
+        console.log("Alternativ for-løkke:");
+        for(let i = 0; i < arrayNavn.length; i++) {
+            console.log(arrayNavn[i]);
+        }
+
+        // Kontrollere om eit gitt teikn finnes i ein string.
+        let sporsmal = "Hvorfor er egentlig programmering så kult?";
+        for(let bokstav of sporsmal) {
+            //console.log(bokstav);
+            if(bokstav == "?") {
+                console.log("Du er flink å stille spørsmål!");
+            }
+            else {
+                //console.log("Skjerp deg. Eg svarar ikkje utan spm. teikn.");
+            }
+        }
+
+        // Mattebiblioteket:
+        const tallPI = Math.PI;
+        console.log(tallPI);
+
+        let desimalTall = 4.98;
+        console.log(Math.round(desimalTall));
+        console.log(Math.floor(desimalTall));
+        console.log(Math.ceil(desimalTall)); 
+
+        // Objekt
+        let person1 = {
+            navn: "Jo Bjørnar", 
+            yrke: "Lærar",
+            alder: 39
+        };
+
+        console.log(person1.yrke);
+
+        /*  Oppgåve til neste gong:
+            Les inn 2 stadsnavn frå brukaren.
+            Finn differansen i antall teikn på desse to.
+        */
+    </script>
+</body>
+</html>
