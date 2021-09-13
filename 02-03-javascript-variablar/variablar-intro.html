@@ -18,18 +18,18 @@
     <script>
         let navn = "Jo Bjørnar";
         console.log("Navnet er: " + navn + "!");
-        console.log(`Navnet er ${navn}`);
+        console.log(`Navnet er ${navn}`); // "Template string"
 
         let pris = 5;
         console.log("Prisen er: " + pris);
-        console.log(parseInt("4 kr",10));
-        console.log(parseInt("1111",2));
-        console.log(parseInt("a",16));
-        //NB: Boka bruker "Number", slik: (men den er ikkje like "kraftig")
-        console.log("(Number:)" + Number("4 kr"));
-        console.log("(Number:)" + Number("4"));
+        console.log(parseInt("4 kr",10)); // "Titalssystemet". Legg merke til at den klarar å "fjerne" teksten "kr"
+        console.log(parseInt("1111",2)); // "Totalssystemet", binær
+        console.log(parseInt("a",16)); // 0-9 a-f (16 moglege verdiar). Jamfør hexadesimale kodar, til dømes ved fargesetting i CSS.
+        //NB: Boka bruker "Number", slik: (men den er ikkje like "kraftig", slik som vist over)
+        console.log("(Number:)" + Number("4 kr")); // Denne gjer feilmelding
+        console.log("(Number:)" + Number("4")); // Eks. på typisk bruk. Hugs, me får alltid tekst inn frå eit tekstfelt, sjølv om det er skrive eit tal.
 
-        // parseFloat, test denne ut.
+        // parseFloat, test denne ut sjølv.
 
         // Boolean (true, false)
         let skalHaRabatt = true;
@@ -38,20 +38,22 @@
             //Alternativt: pris *= 0.5;
         }
         else {
-            pris = pris; // Egentlig unødvendig.
+            pris = pris; // Eigentlig unødvendig.
         }
 
-        // (Tabellar), arrays
+        // Arrays ("tabellar")
         let arrayNavn = ["Jo Bjørnar","Jo Bjarne","Jo B"];
         console.log(arrayNavn);
-        document.getElementById("utskrift").innerHTML = arrayNavn;
+        document.getElementById("utskrift").innerHTML = arrayNavn; // "Kjip" utskrift
 
-        for(let kvartElement of arrayNavn) {
+        // For-løkke, eks. 1
+        for(let kvartElement of arrayNavn) { 
             document.getElementById("utskriftArray").innerHTML += "<li>" + kvartElement + "</li>";
             //document.getElementById("utskriftArray").innerHTML = document.getElementById("utskriftArray").innerHTML + "<li>" + kvartElement + "</li>";
             console.log(kvartElement);
         }
 
+        // For-løkke, eks. 2
         console.log("Alternativ for-løkke:");
         for(let i = 0; i < arrayNavn.length; i++) {
             console.log(arrayNavn[i]);
