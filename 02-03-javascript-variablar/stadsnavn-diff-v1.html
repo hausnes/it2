@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stadsnamn, differanse</title>
+        <meta charset="UTF-8">
+        <style>
+            body{
+                background-color: rgb(91, 91, 105);
+            }
+            #midtstilt{
+                background-color: white;
+                width: 600px;
+                margin: 0 auto;
+                padding: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="midtstilt">
+            <h1>Stadsnamn, vha prompt</h1>
+            <p id="output_stadsnamn"></p>
+        </div> <!-- Avsluttar midtstilt -->
+
+        <!-- Kode -->
+        <script>
+            let output_stadsnamn = document.getElementById("output_stadsnamn");
+            
+            let stadsnamnEin = prompt("Stadsnamn 1:");
+            let stadsnamnTo = prompt("Stadsnamn 2:");
+            
+            output_stadsnamn.innerHTML = "Ein stad heiter <span style='color:red;'>" + stadsnamnEin + "</span>, og ein annan heiter <span style='color:red;'>" + stadsnamnTo + "</span>. ";
+            
+            let lengdeStadEin = parseInt(stadsnamnEin.length);
+            let lengdeStadTo = parseInt(stadsnamnTo.length);
+            
+            output_stadsnamn.innerHTML += "Den første staden består av " + lengdeStadEin + " teikn, medan den andre består av " + lengdeStadTo + ". ";
+
+            let differanseStadsnamn = Math.abs(lengdeStadEin-lengdeStadTo); 
+            console.log(differanseStadsnamn); // For testing under utvikling
+
+            output_stadsnamn.innerHTML += "Differansen mellom desse to er " + differanseStadsnamn + ".";
+        </script>
+    </body>
+</html>
