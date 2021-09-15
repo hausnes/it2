@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>If-else og input-felt</title>
+    <style>
+        body { background-color: rgb(190, 190, 190); }
+        main { width: 600px; padding: 20px; border: black 2px solid; background-color: white; margin: auto;}
+    </style>
+</head>
+<body>
+    <!-- HTML -->
+    <main>
+        <label for="inputAlder">Din alder: </label>
+        <input type="text" id="inputAlder" placeholder="Skriv inn alder">
+        <button id="knappSendInnAlder">Kontroller alder</button>
+
+        <h1 id="utskrift">
+            <!-- Fylles ut i JS-koden under. -->
+        </h1>
+        <img id="bilde" src="" alt="" width="400px"> <!-- Tomt bilde, vises i utg.pkt. ikke. -->
+    </main>
+    
+    <!-- Kode -->
+    <script>
+        document.getElementById("knappSendInnAlder").addEventListener("click", sjekkAlder);
+        //document.getElementById("inputAlder").addEventListener("change", sjekkAlder);
+
+        function sjekkAlder() {
+            // Henter tallet som er skrevet inn i tekstfeltet og lagrer i variabelen 'alder':
+            var alder = document.getElementById("inputAlder").value;
+            // Sjekker alderen og viser bildet dersom brukeren er gammel nok
+            if(alder >= 18) {
+                console.log("Du er gamal nok!");
+                document.getElementById("utskrift").innerHTML = "Du er gamal nok!";
+                document.getElementById("bilde").src = "bileter/cat.webp";
+            }
+            else {
+                console.log("Sida er stengt for deg!");
+                document.getElementById("utskrift").innerHTML = "Sida er stengt for deg!";
+                document.getElementById("bilde").src = "";
+            }
+        }       
+    </script>
+</body>
+</html>
