@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Stadsnamn, differanse</title>
+        <meta charset="UTF-8">
+        <style>
+            body{
+                background-color: rgb(91, 91, 105);
+            }
+            #midtstilt{
+                background-color: white;
+                width: 600px;
+                margin: 0 auto;
+                padding: 25px;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="midtstilt">
+            <h1>Stadsnamn, med brukarinput</h1>
+            <p>
+                <input id="txt_stadEin" type="text" value="" placeholder="Stadsnamn nr. 1">
+                <input id="txt_stadTo" type="text" value="" placeholder="Stadsnamn nr. 2">
+                <button id="knappReknUtDifferanse" type="button">Differanse i antall teikn</button>
+            </p>
+            <p id="output_stadsnamn">
+            </p>
+        </div> <!-- Avsluttar midtstilt -->
+
+        <!-- Kode -->
+        <script>
+            let output_stadsnamn = document.getElementById("output_stadsnamn");
+            let knappReknUtDifferanse = document.getElementById("knappReknUtDifferanse");
+            knappReknUtDifferanse.addEventListener("click", f_stadsnamnDifferanse);
+
+            function f_stadsnamnDifferanse(){
+                let stadsnamnEin = document.getElementById("txt_stadEin").value;
+                let stadsnamnTo = document.getElementById("txt_stadTo").value;
+                
+                // Skriv resten av koden sjølv. Ikkje sjå på løysningsforslaget med ein gong.
+            }
+        </script>
+    </body>
+</html>
