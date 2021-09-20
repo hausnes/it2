@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biletgalleri vha. array</title>
+</head>
+<body>
+    <button id="knappNesteBilde">Neste bilde</button>
+    <button id="knappForrigeBilde">Forrige bilde</button>
+    <br>
+    <img src="" id="bildeSomVises" width="400px">
+
+    <!-- Kode -->
+    <script>
+        let arrayBilder = ["art","backpack","bill","briefcase"];
+        //console.log(arrayBilder[1]); // Test
+
+        // Startar nettsida opp med å vise eit bilete (det første)
+        let aktivtBilde = 0;
+        //document.getElementById("bildeSomVises").src = "bileter/art.svg"; // Samanlikn med linja under. Dei er like, sant?
+        document.getElementById("bildeSomVises").src = "bileter/" + arrayBilder[aktivtBilde] + ".svg";
+
+        // Registrerer lyttefunksjonar på dei to knappane for å navigere i biletgalleriet
+        document.getElementById("knappNesteBilde").addEventListener("click", nesteBilde);
+        document.getElementById("knappForrigeBilde").addEventListener("click", forrigeBilde);
+        
+        // Funksjon som viser det neste biletet
+        function nesteBilde() {
+            //console.log("Funksjonen køyrer..");
+            if (aktivtBilde >= arrayBilder.length - 1) { // Dersom me kjem utanfor arrayen sin lengde
+                aktivtBilde = 0;
+            } else { // Dersom me er innanfor arrayen sin lengde
+                aktivtBilde = aktivtBilde + 1;
+                //aktivtBilde += 1;
+                //aktivtBilde++;
+            }
+            document.getElementById("bildeSomVises").src = "bileter/" + arrayBilder[aktivtBilde] + ".svg";
+        }
+
+         // Funksjon som viser det forrige biletet
+        function forrigeBilde() {
+            if (aktivtBilde <= 0) { // Dersom me kjem utanfor arrayen sin lengde
+                aktivtBilde = arrayBilder.length - 1;
+            } else { // Dersom me er innanfor arrayen sin lengde
+                aktivtBilde = aktivtBilde - 1;
+                //aktivtBilde -= 1;
+            }
+            document.getElementById("bildeSomVises").src = "bileter/" + arrayBilder[aktivtBilde] + ".svg";
+        }
+    </script>
+</body>
+</html>
