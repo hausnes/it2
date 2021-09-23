@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Terningkast</title>
+</head>
+<body>
+    <p id="utskrift">
+        <!-- Fylles ut av JS. -->
+    </p>
+
+    <script>
+        let nedreVerdi = 1;
+        let ovreVerdi = 6;
+
+        let terning1 = getRandomIntInclusive(nedreVerdi,ovreVerdi);
+        let terning2 = getRandomIntInclusive(1,ovreVerdi);
+        let terning3 = getRandomIntInclusive(1,6);
+
+        // MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+            console.log("Test");
+        }
+    </script>
+</body>
+</html>
