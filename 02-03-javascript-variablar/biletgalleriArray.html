@@ -14,12 +14,12 @@
 
     <!-- Kode -->
     <script>
-        let arrayBilder = ["art","backpack","bill","briefcase"];
+        let arrayBilder = ["art","backpack","bill","briefcase"]; // NB: Dersom du har bileter med ulike filtypar så må du legge det til her, samt endre linje 23 under.
         //console.log(arrayBilder[1]); // Test
 
         // Startar nettsida opp med å vise eit bilete (det første)
+        //document.getElementById("bildeSomVises").src = "bileter/art.svg"; // Samanlikn med linja to hakk ned. Dei er like, sant?
         let aktivtBilde = 0;
-        //document.getElementById("bildeSomVises").src = "bileter/art.svg"; // Samanlikn med linja under. Dei er like, sant?
         document.getElementById("bildeSomVises").src = "bileter/" + arrayBilder[aktivtBilde] + ".svg";
 
         // Registrerer lyttefunksjonar på dei to knappane for å navigere i biletgalleriet
