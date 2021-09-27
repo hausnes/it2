@@ -12,7 +12,7 @@
     </p>
 
     <script>
-        let nedreVerdi = 1;
+        let nedreVerdi = 1; // Kvifor gjer me det sånn?
         let ovreVerdi = 6;
 
         let terning1 = getRandomIntInclusive(nedreVerdi,ovreVerdi);
@@ -24,7 +24,7 @@
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
-            console.log("Test");
+            console.log("Test"); // Denne linja køyrer ikkje, fordi ingenting køyrer etter "return" slik som i førre linje
         }
     </script>
 </body>
