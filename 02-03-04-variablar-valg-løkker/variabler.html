@@ -14,7 +14,8 @@
         let navn = prompt("Kva heiter du?");
         console.log("Hei, " + navn + ".");
 
-        let tallEn = Number(prompt("Tall 1?"));
+        //let tallEn = Number(prompt("Tall 1?")); // Eventuelt parseInt
+        let tallEn = parseInt(prompt("Tall 1?"),10); // Kan eventuelt kutte ut ,10 sidan det er standard. parseInt(prompt("Tall 1?"));
         console.log("Tall en: " + tallEn);
         let tallTo = Number(prompt("Tall 2?"));
         console.log("Tall to: " + tallTo);
