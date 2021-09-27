@@ -9,20 +9,43 @@
 <body>
     <h1>Leikedokument, sjå console</h1>
     <p id="utskrift">
-        // Fylles ut av JS
+        <!-- Fylles ut av JS -->
     </p>
 
     <!-- Kode -->
     <script>
-        
+        console.log("4 === 10 = " + (4===10)); // Dette (4===10) er ein test for å sjekke om dei er like, returnerer "true" eller "false"
+        console.log("4 == '4' = " + (4=='4')); // Sjekk denne og neste linje for ein gjennomgang av dette med 2 eller 3 stk erlikteikn (=).
+        console.log("4 === '4' = " + (4==='4'));
 
-        console.log(4===10);
+        let navn = "Jo Bjørnar";
 
-        document.body.style.backgroundColor = "red";
-        
-        var para = document.createElement("P"); // Create a <p> element
-        para.innerText = "This is a paragraph"; // Insert text
-        document.body.appendChild(para);  
+        if (navn === "Jo Bjørnar") {
+            document.getElementById("utskrift").innerHTML = "Du er Jo Bjørnar.";
+        } else {
+            document.getElementById("utskrift").innerHTML = "Gidd ikkje snakke med nokon andre enn Jo Bjørnar.";
+        }
+
+        let tall = "4";
+
+        if (typeof tall === "number") { // typeof, forklaring: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/typeof
+            if (tall < 0) {
+                console.log("Du må skrive inn eit positivt tall.");
+            } else if (tall > 1000) {
+                console.log("Talet må vere mindre enn 1000.");
+            } else if (tall <= 5) {
+                console.log("Talet er mindre eller lik 5.");
+            } else if (tall > 5 && tall <= 10) {
+                console.log("Talet er større enn 5 og mindre eller lik 10.");
+            } else if (tall > 10 && tall <= 20) {
+                console.log("Talet er større enn 10 og mindre eller lik 20.");
+            } else {
+                console.log("Talet er større enn 20 og mindre enn eller lik 1000.");
+            }
+        }
+        else {
+            console.log("Du kan ikkje skrive inn bokstavar.");
+        }
     </script>
 </body>
 </html>
