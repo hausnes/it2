@@ -36,7 +36,8 @@
                 //aktivtBilde += 1;
                 //aktivtBilde++;
             }
-            document.getElementById("bildeSomVises").src = "bileter/" + arrayBilder[aktivtBilde] + ".svg";
+            //document.getElementById("bildeSomVises").src = "bileter/" + arrayBilder[aktivtBilde] + ".svg";
+            settBilde(aktivtBilde);
         }
 
          // Funksjon som viser det forrige biletet
@@ -47,7 +48,13 @@
                 aktivtBilde = aktivtBilde - 1;
                 //aktivtBilde -= 1;
             }
-            document.getElementById("bildeSomVises").src = "bileter/" + arrayBilder[aktivtBilde] + ".svg";
+            //document.getElementById("bildeSomVises").src = "bileter/" + arrayBilder[aktivtBilde] + ".svg";
+            settBilde(aktivtBilde);
+        }
+
+        // Eksempel på betre bruk av funksjonar:
+        function settBilde(bildeInn) {
+            document.getElementById("bildeSomVises").src = "bileter/" + arrayBilder[bildeInn] + ".svg";
         }
     </script>
 </body>
