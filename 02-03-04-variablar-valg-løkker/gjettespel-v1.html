@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gjettespel</title>
+</head>
+<body>
+    <h1>Gjettespel</h1>
+    <p id="utskrift">
+        <!-- Fylles ut av JS. -->
+    </p>
+
+    <script>
+        let svar = -1;
+        let tilfeldigTall = getRandomIntInclusive(1,10);
+        console.log("tilfeldig tal = " + tilfeldigTall); // Slik at me kan jukse
+        let antGjett = 0;
+
+        while(tilfeldigTall != svar && antGjett < 3) { // Så lenge tilfeldigtall er ulikt svar
+            antGjett += 1;
+            console.log("Forsøk nr. " + antGjett + ":");
+            svar = parseInt(prompt("Gjett på eit tal ml. 1 og 10!"));
+            console.log("Du gjetta: " + svar);
+        }
+
+        if (tilfeldigTall === svar) {
+            console.log("Du vant! Både antall gjett og svaret var godkjent.");
+            document.getElementById("utskrift").innerHTML = "Du vant! Både antall gjett og svaret var godkjent.";
+        } else {
+            console.log("Du gjetta feil, og har ikkje fleire forsøk igjen.");
+            document.getElementById("utskrift").innerHTML = "Du gjetta feil, og har ikkje fleire forsøk igjen.";
+        }
+        
+
+        // MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+            console.log("Test"); // Denne linja køyrer ikkje, fordi ingenting køyrer etter "return" slik som i førre linje
+        }
+    </script>
+</body>
+</html>
