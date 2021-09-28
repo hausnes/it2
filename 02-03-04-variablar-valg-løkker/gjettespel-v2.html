@@ -8,16 +8,33 @@
 </head>
 <body>
     <input type="number" id="inpGjettetTall">
+    <br> <!-- Linjeskift -->
     <button id="gjett">Gjett</button>
+    <p id="utskrift">
+        <!-- Fylles ut av JS. -->
+    </p>
 
     <script>
         let tilfeldigTall = getRandomIntInclusive(1,10);
-        let svar = -1;
-        
+        let antGjett = 3;
+        let forsokNr = 0;
+
         document.getElementById("gjett").addEventListener("click", gjettTall);
 
         function gjettTall() {
-
+            let svarFraBruker = document.getElementById("inpGjettetTall").value;
+            forsokNr++;
+            console.log("Forsøk " + forsokNr + " av " + antGjett);
+            console.log("Du gjetta: " + svarFraBruker + ", medan riktig svar er: " + tilfeldigTall);
+            if (forsokNr >= antGjett) {
+                document.getElementById("utskrift").innerHTML = "Du har ikkje fleire forsøk igjen. Fail!";
+            }
+            else if (parseInt(svarFraBruker) === tilfeldigTall) {
+                document.getElementById("utskrift").innerHTML = "Gratulerar! Riktig svar."
+            }
+            else {
+                document.getElementById("utskrift").innerHTML = "Feil svar, forsøk igjen. Forsøk " + forsokNr + " av " + antGjett;
+            }
         }
 
         // MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
@@ -25,7 +42,6 @@
             min = Math.ceil(min);
             max = Math.floor(max);
             return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
-            console.log("Test"); // Denne linja køyrer ikkje, fordi ingenting køyrer etter "return" slik som i førre linje
         }
     </script>
 </body>
