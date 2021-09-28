@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <input type="number" id="inpGjettetTall">
+    <button id="gjett">Gjett</button>
+
+    <script>
+        let tilfeldigTall = getRandomIntInclusive(1,10);
+        let svar = -1;
+        
+        document.getElementById("gjett").addEventListener("click", gjettTall);
+
+        function gjettTall() {
+
+        }
+
+        // MDN: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive
+            console.log("Test"); // Denne linja køyrer ikkje, fordi ingenting køyrer etter "return" slik som i førre linje
+        }
+    </script>
+</body>
+</html>
