@@ -1,10 +1,10 @@
 var bileteKylling = document.getElementById("bileteKylling");
-bileteKylling.onclick = f_klikkPaaEgg; // Registrerer ein lyttefunksjon på egget
+bileteKylling.addEventListener("click", klikkPaaEgg); // Registrerer ein lyttefunksjon på egget
 
 var undertekstBilete = document.getElementById("undertekstBilete"); // Her vil me skrive ut info om antall trykk
 var antallKlikk = 0; // Held kontroll på kor mange klikk me har gjort
 
-function f_klikkPaaEgg(){
+function klikkPaaEgg(){
     antallKlikk = antallKlikk + 1; // Aukar antall klikk
     undertekstBilete.innerHTML = "Du har trykt " + antallKlikk + " gonger."; // Info til brukar
 
