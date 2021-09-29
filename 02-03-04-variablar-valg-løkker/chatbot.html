@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot</title>
+</head>
+<body>
+    <h1>Chatbot</h1>
+    <ul id="utskrift">
+        <!-- Fylles ut av JS. -->
+    </ul>
+
+    <script>
+        let utskrift = document.getElementById("utskrift");
+
+        let navn = prompt("Hva heter du?");
+        utskrift.innerHTML = "<li>Hei, " + navn + "!</li>";
+
+        let interesser = prompt("Kva er du interessert i?");
+        if (interesser.toLowerCase().includes("chips")) {
+            utskrift.innerHTML += "<li>Bra, chips er ein av grunnsteinane i korleis eg vel ut koner og vener.</li>";
+        } else {
+            utskrift.innerHTML += "<li>Ingen chips, intet vennskap.</li>";
+        }
+    </script>
+</body>
+</html>
