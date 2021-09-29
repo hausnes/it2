@@ -5,16 +5,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Biletgalleri vha. array</title>
+    <style>
+        html, body { margin: 0; padding: 0; height: 100%; width: 100%; }
+        body { display: flex; justify-content: center; align-items: center; background-color: #abcdef; }
+        main { width: 600px; height: 600px; padding: 20px; border: 2px solid black; background-color: white; }
+        figure { display: flex; justify-content: center; align-items: center; }
+        button { padding: 10px; }
+    </style>
 </head>
 <body>
-    <button id="knappNesteBilde">Neste bilde</button>
-    <button id="knappForrigeBilde">Forrige bilde</button>
-    <br>
-    <img src="" id="bildeSomVises" width="400px">
+    <main>    
+        <button id="knappNesteBilde">Neste bilde</button> 
+        <button id="knappForrigeBilde">Forrige bilde</button>
+        <p><hr></p>
+        <figure>    
+            <img src="" id="bildeSomVises" width="400px">
+        </figure>
+    </main>
 
     <!-- Kode -->
     <script>
-        let arrayBilder = ["art","backpack","bill","briefcase"]; // NB: Dersom du har bileter med ulike filtypar så må du legge det til her, samt endre linje 23 under.
+        let arrayBilder = ["calc","backpack","bill","briefcase"]; // NB: Dersom du har bileter med ulike filtypar så må du legge det til her, samt endre linje 23 under.
         //console.log(arrayBilder[1]); // Test
 
         // Startar nettsida opp med å vise eit bilete (det første)
