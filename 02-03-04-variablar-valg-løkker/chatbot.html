@@ -19,7 +19,7 @@
         utskrift.innerHTML = "<li>Hei, " + navn + "!</li>";
 
         let interesser = prompt("Kva er du interessert i?");
-        if (interesser.toLowerCase().includes("chips")) {
+        if (interesser.toUpperCase().includes("CHIPS")) {
             utskrift.innerHTML += "<li>Bra, chips er ein av grunnsteinane i korleis eg vel ut koner og vener.</li>";
         } else {
             utskrift.innerHTML += "<li>Ingen chips, intet vennskap.</li>";
