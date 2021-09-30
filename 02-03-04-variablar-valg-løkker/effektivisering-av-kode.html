@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="knapp1">Hei</button>
+    <button id="knapp2">Hei2</button>
+    <button id="knapp3">Hei3</button>
+
+    <script>
+        // Gammal måte å legge til mange lyttefunksjonar på. Korleis oppleves denne jobben når det blir mange knappar?
+        /*
+        document.getElementById("1").addEventListener("click", klikket);
+        document.getElementById("2").addEventListener("click", klikket);
+        document.getElementById("3").addEventListener("click", klikket);
+        */
+
+        // Her er ein litt betre måte å legge til fleire lyttefunksjonar, der du må 
+        // hugse å spesifisere antall knappar i variabelen under. Sjå ein endå
+        // betre strategi lenger nede der me fjernar lyttefunksjonane.
+        let antKnappar = 3;
+
+        for (let i = 1; i <= antKnappar; i++) {
+            console.log("Legg til lyttefunksjon til knapp med id: " + ("knapp" + i)); // For å teste om det stemmer med ID-ane
+            document.getElementById("knapp" + i).addEventListener("click", klikket);
+        }
+
+        // Ein og same funksjon for alle knappane
+        function klikket(evt) {
+            console.log("Du klikka på " + evt.target.id);
+        }
+        
+        // Eit alternativ metode for å fjerne alle lyttefunksjonane. Me kunne brukt same for-løkke som over, berre ved å skrive removeEventListener.
+        let arrKnappar = document.getElementsByTagName("button"); // Dette lagar ei såkalla nodelist, og er altså ikkje ein array
+        //let arrKnappar = Array.from(document.getElementsByTagName("button")); // Slik kunne me gjort nodelista over om til ein array. Resten av koden forblir lik.
+        console.log(arrKnappar);
+        for (let kvarKnapp of arrKnappar) {
+            console.log("Fjernar no knappen med id: " + kvarKnapp.id);
+            document.getElementById(kvarKnapp.id).removeEventListener("click",klikket);
+        }
+    </script>
+</body>
+</html>
