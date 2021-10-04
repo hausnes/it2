@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kast terningar</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Kast terningar</h1>
+    <p>
+        Trykk på knappen under for å simulere fleire kast (endre antallet i input-feltet) med tre terningar. 
+        Målet er å: 
+        <ul>
+            <li>få 3 (eller alle) like</li>
+            <li>få over 15 i sum for kvart kast</li>
+            <li>...</li>
+        </ul>
+        Du får ein tilbakemelding på dette etter at du har trilla terningane.
+    </p>
+    <input id="inputAntKast" type="number" placeholder="Antall kast"> 
+    <button id="knappMangeKast" type="button">Trill terningar og sjekk resultat</button>
+    <p id="utskrift_antallAlleLike"></p>
+    <p id="utskrift_antallGongerOverFemten"></p>
+    <div id="utskrift_terning"></div>
+    
+    <!-- JS -->
+    <script>
+        var utskrift_terning = document.getElementById("utskrift_terning");
+        var utskrift_antallAlleLike = document.getElementById("utskrift_antallAlleLike");
+        var utskrift_antallGongerOverFemten = document.getElementById("utskrift_antallGongerOverFemten");
+        var inputAntKast = document.getElementById("inputAntKast");
+
+        var knappMangeKast = document.getElementById("knappMangeKast");
+        knappMangeKast.onclick = f_statistikkMangeKast;
+
+        // Variablar me skal bruke
+        var tern1 = 0; // Startverdiane til terningane
+        var tern2 = 0; 
+        var tern3 = 0;
+        // Eventuelt ein array med terningar
+        var terningArray = [];
+
+        var antallAlleLike = 0; // Tek vare på kor mange gonger du oppnår 3 like terningar, til å begynne med er denne 0.
+        var antallGongerOverFemten = 0;
+        var antallKast = 0; // Her set du kor mange forsøk/kast ein skal simulere.
+        var antallTerningar = 3; // Kor mange terningar skal kastast kvar gong, kunne bedt bruker om dette òg
+        var terningVerdiMaks = 6;
+        var terningVerdiMin = 1;
+
+        // Funksjonen som set i gang heile prosessen
+        function f_statistikkMangeKast(){
+            antallKast = inputAntKast.value;
+            antallAlleLike = 0; // Nullstiller når me trykker på knappen, slik at me ikkje legg til på dei ev. førre kasta.
+            antallGongerOverFemten = 0;
+            terningArray = []; // Tømmer arrayen
+            utskrift_terning.innerHTML = "No blir det gjort " + antallKast + " forsøk på å få tre like.";
+            for(var i = 1; i <= antallKast; i++){
+                utskrift_terning.innerHTML += "<h1>Kast nr. " + i + ": ";
+                f_rullTerningar(antallTerningar);
+                f_sjekkResultat();
+            } 
+            utskrift_antallAlleLike.innerHTML = "<span style='color:red;'>Du fekk tre like terningar " + antallAlleLike + " gonger.</span>";
+            utskrift_antallGongerOverFemten.innerHTML = "<span style='color:red;'>Du fekk over 15 i sum " + antallGongerOverFemten + " gonger.</span>";
+        }
+
+        function f_rullTerningar(antallTerningar){
+            // Forenkla, og med moglegheit for utvidelse, til dømes med array
+            utskrift_terning.innerHTML += "Resultat: ";
+            for(let i = 0; i < antallTerningar; i++){
+                terningArray[i] = f_tilfeldigTal(terningVerdiMin,terningVerdiMaks);
+                utskrift_terning.innerHTML += terningArray[i] + " ";
+            }
+            /* Alternativt, meir "hardkoda" og forenkla
+            tern1 = f_tilfeldigTal(terningVerdiMin,terningVerdiMaks); 
+            tern2 = f_tilfeldigTal(terningVerdiMin,terningVerdiMaks); 
+            tern3 = f_tilfeldigTal(terningVerdiMin,terningVerdiMaks);
+            utskrift_terning.innerHTML += "Resultat: " + tern1 + ", " + tern2 + " og " + tern3 + "<br>";*/
+        }
+
+        function f_tilfeldigTal(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+        }
+        
+        function f_sjekkResultat(){
+            // Kontrollerer om terningane er like
+            f_sjekkOmArrayHarLikeVerdiar(terningArray);
+            
+            // Kontrollerer om summen av auga på terningen er over 15
+            f_sjekkOmArrayErOverFemten(terningArray);
+
+            /* Igjen, forenkla, kan utvidast som med funksjonen me her bruker i staden for
+            if(tern1 === tern2 && tern1 === tern3 && tern2 === tern3){ // Kan denne skrivast kortare?
+                utskrift_terning.innerHTML += "<br><span style='color:red;'>Du fikk tre like!</span><br>";
+                antallTreLike++;
+            }
+            else utskrift_terning.innerHTML += "<br>Desse terningane er ikkje like kvarandre.";
+            
+            var sum = tern1 + tern2 + tern3;
+            if(sum >= 15){ 
+                    utskrift_terning.innerHTML += "<br>Summen av terningene er femten eller mer.";
+                    antallGongerOverFemten++;
+            }
+            else utskrift_terning.innerHTML += "<br>Summen av terningane overstig ikkje 15, den er berre " + sum + ".";*/
+        }
+
+        function f_sjekkOmArrayHarLikeVerdiar(terningArray){
+            for(var i = 0; i < terningArray.length - 1; i++) {
+                if(terningArray[i] !== terningArray[i+1]) {
+                    return false; // NB: Hugs at return gjer at funksjonen stoppar her, altså: med ein gong me finn noko som ikkje er likt så avsluttar me
+                }
+            }
+            // Dersom ikkje false
+            antallAlleLike++;
+            utskrift_terning.innerHTML += "<br><span style='color:red;'>Du fikk alle like!</span><br>";
+            return true;
+        }
+
+        function f_sjekkOmArrayErOverFemten(terningArray){
+            var sum = 0;
+            for(let a = 0; a < terningArray.length; a++){
+                sum += terningArray[a];
+            }
+            if(sum>= 15){
+                antallGongerOverFemten++;
+                utskrift_terning.innerHTML += "<br><span style='color:red;'>Summen er " + sum + ", altså innfridde du her òg!</span><br>";
+            }
+        }
+    </script>
+</body>
+
+</html>
