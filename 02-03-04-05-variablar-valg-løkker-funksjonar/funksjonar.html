@@ -8,6 +8,8 @@
 </head>
 <body>
     <h1>Sjå console.</h1>
+    <button id="knappTest1">Trykk 1!</button>
+    <button id="knappTest2">Trykk 2!</button>
 
     <script>
         function tut() {
@@ -19,6 +21,7 @@
         }
 
         tut();
+        
         sei("Jo Bjørnar");
         let einVariabel = "IT2!";
         sei(einVariabel);
@@ -33,6 +36,15 @@
 
         let mittTall = getRandomIntInclusive(1,6);
         sei(mittTall);
+
+        document.getElementById("knappTest1").addEventListener("click", test);
+        function test() {
+            console.log("Trykte på knapp nr. 1!");
+        }
+
+        document.getElementById("knappTest2").addEventListener("click", function() {
+            console.log("Du trykte på knapp nr. 2! Denne brukar ein anonym funksjon.");
+        });
     </script>
 </body>
 </html>
