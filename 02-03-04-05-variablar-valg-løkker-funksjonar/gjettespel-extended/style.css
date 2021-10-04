@@ -1,0 +1,46 @@
+/* Bakgrunnen for heile sida */
+body {
+    background-color: lightblue;
+}
+
+/* Midtstiller heile designet */
+.midtstilt {
+    width: 350px;
+    background-color:whitesmoke;
+    margin: 0 auto;
+    padding: 10px;
+}
+
+/* Avstandar rundt dei tre koppane */
+#koppar {
+    padding: 20px;
+}
+
+/* Avstand innan tilbakemeldlingsfeltet */
+#p_resultatUt {
+    padding: 5px;
+}
+
+/* Grafiske innstillingar for knappen */
+.button {
+  padding: 25px 25px;
+  font-size: 14px;
+  text-align: center;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color:darkred;
+  border: none;
+  border-radius: 15px;
+  /*box-shadow: 0 9px #999;*/
+}
+
+.button:hover {
+    background-color:darkred;
+}
+
+.button:active {
+  background-color: darkred;
+  /*box-shadow: 0 5px #666;*/
+  transform: translateY(4px);
+}

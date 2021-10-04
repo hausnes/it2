@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<head>
+    <title>Gjettespel</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- HTML -->
+    <div class="midtstilt">
+        <h1>Gjettespel</h1>
+        <p id="p_opningsbeskjed">
+            <!-- Instruksar som blir ståande heile tida -->
+        </p>
+        <div id="koppar">
+            <img src="bilder/kopp.png" width="100" id="kopp1" data-kopp="kopp1">
+            <img src="bilder/kopp.png" width="100" id="kopp2" data-kopp="kopp2">
+            <img src="bilder/kopp.png" width="100" id="kopp3" data-kopp="kopp3">
+        </div>
+        <p id="p_resultatUt">
+            <!-- Her kjem resultatet i form av tekst -->
+        </p>
+        <button id="btn_startSpel" class="button">Start spel på nytt</button>
+        <span id="utAntForsok"></span>
+        <div id="utEndelegResultat"></div>
+    </div> <!-- Avsluttar midtstilt -->
+
+    <!-- Koden -->
+    <script src="gjettespel.js"></script>
+</body>
+
+</html>

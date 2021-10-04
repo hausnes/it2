@@ -32,8 +32,20 @@
         // Ein og same funksjon for alle knappane
         function klikket(evt) {
             console.log("Du klikka på " + evt.target.id);
+            if (evt.target.id === "knapp1") {
+                console.log("Gjer noko som er unikt for knapp 1.");
+                // Gjer noko som er unikt for knapp 1
+            } 
+            else if (evt.target.id === "knapp2") {
+                console.log("Gjer noko som er unikt for knapp 2.");
+                // Gjer noko som er unikt for knapp 2
+            }
+            else {
+                console.log("Gjer noko som er unikt for knapp 3.");
+                // Gjer noko som er unikt for knapp 3
+            }
         }
-        
+        /*
         // Eit alternativ metode for å fjerne alle lyttefunksjonane. Me kunne brukt same for-løkke som over, berre ved å skrive removeEventListener.
         let arrKnappar = document.getElementsByTagName("button"); // Dette lagar ei såkalla nodelist, og er altså ikkje ein array
         //let arrKnappar = Array.from(document.getElementsByTagName("button")); // Slik kunne me gjort nodelista over om til ein array. Resten av koden forblir lik.
@@ -42,6 +54,7 @@
             console.log("Fjernar no knappen med id: " + kvarKnapp.id);
             document.getElementById(kvarKnapp.id).removeEventListener("click",klikket);
         }
+        */
     </script>
 </body>
 </html>
