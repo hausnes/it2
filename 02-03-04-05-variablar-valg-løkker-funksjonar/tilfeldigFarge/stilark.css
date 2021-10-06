@@ -1,0 +1,55 @@
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: black;
+}
+
+button {
+    width: 400px;
+    height: 3em;
+    font-size: 2em;
+    margin-top: 30px;
+    text-align: center;
+    background-color: white;
+    color: rgb(0, 0, 0);
+}
+
+p {
+    width: 350px;
+    background-color: white;
+    color: black;
+    padding: 30px;
+    font-size: 2em;
+    color: gray;
+    border: 1px solid black;
+}
+
+#utskrift {
+    color: black;
+}
+
+.klasseEndreFarge {
+    animation: endreFarge 5s;
+}
+  
+@keyframes endreFarge {
+    0% {
+        background-color: #fff;
+        color: black;
+    }
+    25% {
+        background-color: aqua;
+    }
+    50% {
+        background-color: yellow;
+    }
+    75% {
+        background-color: gold;
+    }
+    100% {
+        background-color: #FF4136;
+        color: white;
+    }
+}
