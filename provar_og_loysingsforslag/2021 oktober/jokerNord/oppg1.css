@@ -1,0 +1,67 @@
+html, body {
+    height: 100%;
+    width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+main {
+    font-size: 2.5em;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+main p {
+    display: block;
+    text-align: center;
+    color: white;
+    width: 1em;
+    text-align: center;
+    background-color: rgb(119, 119, 119);
+    padding: 1em;
+    padding-right: 1.5em;
+    padding-left: 1.5em;
+    border: 2px rgb(119, 119, 119) solid;
+}
+
+#utskrift {
+    background-color: black;
+}
+
+a {
+    text-decoration: none;
+}
+
+main p:hover {
+    border: 2px black solid;
+    background-color: rgb(228, 228, 228);
+}
+
+section {
+    text-align: center;
+    height: 2em;
+    color: white;
+}
+
+@keyframes visFokus {
+    0%   {background-color: black;}
+    25%  {background-color: yellow;}
+    50%  {background-color: black;}
+    100% {background-color: yellow;}
+}
+
+#utskrift {
+    animation-name: visFokus;
+    animation-duration: 1s;
+    animation-delay: 1s;
+}
+  
