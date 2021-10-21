@@ -37,9 +37,9 @@ for (let i = 0; i < vareoversiktKonkurrent.length; i++) {
         vareoversiktEiga[i] = vareoversiktKonkurrent[i] - fraktpris;
 
         // Legg til/skriv ut korrigert pris til variabelen "tilUtskrift":
-        tilUtskrift +=      `<li>
-                                    Ny eigen pris: ${vareoversiktEiga[i]} (konkurrent: ${vareoversiktKonkurrent[i]}) 
-                            </li>
+                tilUtskrift +=      `<li>
+                                            Ny eigen pris: ${vareoversiktEiga[i]} (konkurrent: ${vareoversiktKonkurrent[i]}) 
+                                    </li>
                                 </ul>`;
 
         // Her skriv me faktisk ut variabelen "tilUtskrift" til HTML-en.
