@@ -1,0 +1,23 @@
+section {
+    display: flex;
+}
+
+table {
+    font-family: arial, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+th {
+    background-color: rgb(189, 225, 255);
+}
+
+td, th {
+    border: 2px solid #dddddd;
+    text-align: center;
+    padding: 10px;
+}
+
+tr:nth-child(odd) {
+    background-color: #dddddd;
+}
