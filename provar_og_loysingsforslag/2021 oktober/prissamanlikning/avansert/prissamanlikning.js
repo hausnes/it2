@@ -1,4 +1,4 @@
-let vareoversiktKonkurrent = [48,58,12,23,34,45];
+let vareoversiktKonkurrent = [48,58,15,23,34,45];
 let vareoversiktEiga       = [56,60,10,21,34,49];
 let fraktpris = 2; // Definerer ein fast fraktpris 
 
@@ -21,7 +21,7 @@ for (let i = 0; i < vareoversiktKonkurrent.length; i++) {
         console.log("Ny pris: " + vareoversiktEiga[i] + " (konkurrent: " + vareoversiktKonkurrent[i] + ")");
         */
 
-        // Utskrift til HTML:
+        // Utskrift til HTML (bruker 'template string' (sjå boka) for at det kanskje skal sjå meir oversikteleg ut):
         let tilUtskrift =  `<li>Vare nr. ${i+1}</li>
                                 <ul>
                                     <li>
@@ -44,10 +44,6 @@ for (let i = 0; i < vareoversiktKonkurrent.length; i++) {
 
         // Her skriv me faktisk ut variabelen "tilUtskrift" til HTML-en.
         utskrift.innerHTML += tilUtskrift;
-    }
-    else if (vareoversiktKonkurrent[i] > vareoversiktEiga[i]) {
-        //console.log("Prisen var høgare hjå konkurrent. Konkurrent: " +  vareoversiktKonkurrent[i] + ", eigen pris: " + vareoversiktEiga[i]);
-        //console.log("Justerer pris..");
     }
 }
 
