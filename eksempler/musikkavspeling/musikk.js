@@ -17,7 +17,8 @@ const songliste = ['The Lazy Song—Bruno Mars','Love Song—Sara Bareilles','Th
 function shuffleArray(array) {
     for (let i = array.length - 1; i > 0; i--) {
         const j = Math.floor(Math.random() * (i + 1));
-        [array[i].song, array[j].song] = [array[j].song, array[i].song];
+        //[array[i].song, array[j].song] = [array[j].song, array[i].song]; // Dette ser ut til å bli feil
+        [array[i], array[j]] = [array[j], array[i]];
     }
     return array;
 }
@@ -31,3 +32,8 @@ console.log(musikkSamling[1].song);
 for (let song of musikkSamling) {
     document.getElementById("utskrift").innerHTML += "<li>" + song.song + "</li>";
 }
+
+document.getElementById("mp3spelar").src = "lydfiler/" + shufflaSongliste[1].songLink;
+console.log("Spelar no: " + shufflaSongliste[1].songLink);
+document.getElementById("utskrift").childNodes[4].style.backgroundColor = "yellow";
+console.log(document.getElementById("utskrift").childNodes[4]);
