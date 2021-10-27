@@ -1,68 +1,4 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <meta charset="UTF-8">
-        <title>Krypteringsmaskina: Hausnigma</title>
-        <style>
-            body{
-                background-color: lightblue;
-            }
-            .midtstiltDesign{
-                width: 500px;
-                background-color: white;
-                padding: 10px;
-                margin: 0 auto;
-            }
-            .storTekstboks{
-                width: 300px;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- HTML -->
-        <div class="midtstiltDesign">
-            <h1>Kryptering og dekryptering </h1>
-            <p>
-                Denne nettsida lar deg enkelt leike med å kunne både kryptere og dekryptere meldingar (i tekstform).
-                Me bruker Caesar-kryptering for å oppnå dette, der du kort fortalt ved å kryptere gjer ein forskyvning
-                i alfabetet, der til dømes ein 'a' blir 'b' dersom du har ein forskyvning (nøkkel) satt til 1.
-            </p>
-            <p>
-                Merk at slik løysinga er per no må du bruke ein nøkkel mellom 0 (ingen kryptering) og 29 (når
-                me berre bruker små bokstavar) eller 58 (når me også skiller mellom store og små bokstavar).
-            </p>
-            <div>
-                <!-- <input id="inputMelding" class="storTekstboks" type="text" placeholder="Skriv inn meldinga di her"> -->
-                <textarea id="inputMelding" rows="4" cols="50">Skriv inn meldinga di her</textarea><br>
-                <input id="inputKrypteringsnokkel" type="number" placeholder="Nøkkel" min="0" max="29">
-                <button type="button" id="knappKrypter">Krypter meldinga</button>
-                <button type="button" id="knappDekrypter">Dekrypter meldinga</button>
-                <p id="outputMelding">
-                    Her kjem resultatet av krypteringa eller dekrypteringa.
-                </p>
-            </div>
-            <h1>'Brute force'</h1>
-            <p>
-                Har du ein melding der du er usikker på kva krypteringsnøkkel som har blitt brukt, men du er sikker på at det 
-                er Caesar-kryptering, så kan du la datamaskina gjere jobben for deg med å teste ut mange kombinasjonar, slik at
-                du kan sjå etter den riktige løysinga.
-            </p>
-            <p>
-                Framgangsmåte: Skriv inn den krypterte teksten i feltet over og trykk på knappen 'Rå kraft!'. Nøkkelen blir i dette tilfellet
-                ikkje henta ut frå felta over, der altså algoritmen vår heller sjekkar haugevis av alternativ, skriv ut resultata og ber deg om 
-                å sjå kva som gjer meining.
-            </p>
-            <div>
-                <button type="button" id="knappBruteForce">Rå kraft!</button>
-            </div>
-            <p id="outputBruteForce">
-                Her kjem resultatet av "brute force"-algoritmen.
-            </p>
-        </div> <!-- Avsluttar midtstiltDesign -->
-
-        <!-- Kode -->
-        <script>
-            var inputMelding = document.getElementById("inputMelding");
+var inputMelding = document.getElementById("inputMelding");
             var inputKrypteringsnokkel = document.getElementById("inputKrypteringsnokkel");
             var outputMelding = document.getElementById("outputMelding");
             var outputBruteForce = document.getElementById("outputBruteForce");
@@ -196,6 +132,3 @@
                     console.log(dekryptertMelding);
                 }
             }
-        </script>
-    </body>
-</html>
