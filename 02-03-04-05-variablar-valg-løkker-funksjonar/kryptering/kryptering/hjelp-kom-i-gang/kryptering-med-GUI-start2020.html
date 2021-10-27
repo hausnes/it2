@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Krypteringsmaskina: Hausnigma</title>
+        <style>
+            body{
+                background-color: lightblue;
+            }
+            .midtstiltDesign{
+                width: 500px;
+                background-color: white;
+                padding: 10px;
+                margin: 0 auto;
+            }
+            .storTekstboks{
+                width: 300px;
+            }
+        </style>
+    </head>
+    <body>
+        <!-- HTML -->
+        <div class="midtstiltDesign">
+            <h1>Kryptering og dekryptering</h1>
+            <p>
+                Denne nettsida lar deg enkelt leike med å kunne både kryptere og dekryptere meldingar (i tekstform).
+                Me bruker Caesar-kryptering for å oppnå dette, der du kort fortalt ved å kryptere gjer ein forskyvning
+                i alfabetet, der til dømes ein 'a' blir 'b' dersom du har ein forskyvning (nøkkel) satt til 1.
+            </p>
+            <p>
+                Merk at slik løysinga er per no må du bruke ein nøkkel mellom 0 (ingen kryptering) og 29 (når
+                me berre bruker små bokstavar) eller 58 (når me også skiller mellom store og små bokstavar). Tek du hensyn til
+                spesialteikn og liknande òg, må du justere i forhold til dette. Tips: Begynn enkelt.
+            </p>
+            <div>
+                <!-- <input id="inputMelding" class="storTekstboks" type="text" placeholder="Skriv inn meldinga di her"> -->
+                <textarea id="inputMelding" rows="4" cols="50">Skriv inn meldinga di her</textarea><br>
+                <input id="inputKrypteringsnokkel" type="number" placeholder="Nøkkel" min="0" max="58">
+                <button type="button" id="knappKrypter">Krypter meldinga</button>
+                <button type="button" id="knappDekrypter">Dekrypter meldinga</button>
+                <p id="outputMelding">
+                    Her kjem resultatet av krypteringa eller dekrypteringa.
+                </p>
+            </div>
+            <h1>'Brute force'</h1>
+            <p>
+                Har du ein melding der du er usikker på kva krypteringsnøkkel som har blitt brukt, men du er sikker på at det 
+                er Caesar-kryptering, så kan du la datamaskina gjere jobben for deg med å teste ut mange kombinasjonar, slik at
+                du kan sjå etter den riktige løysinga.
+            </p>
+            <p>
+                Framgangsmåte: Skriv inn den krypterte teksten i feltet over og trykk på knappen 'Rå kraft!'. Nøkkelen blir i dette tilfellet
+                ikkje henta ut frå felta over, der altså algoritmen vår heller sjekkar haugevis av alternativ, skriv ut resultata og ber deg om 
+                å sjå kva som gjer meining.
+            </p>
+            <p>
+                Bonusoppgåve: Forsøk å antyd til brukaren kva som kan vere riktig dekryptering. Mogleg tankegang: Dersom ein dekryptert string
+                inneheld ord som "gjer meining" kan dette vere ein indikasjon på at dette kan vere riktig.
+            </p>
+            <div>
+                <button type="button" id="knappBruteForce">Rå kraft!</button>
+            </div>
+            <p id="outputBruteForce">
+                Her kjem resultatet av "brute force"-algoritmen.
+            </p>
+        </div> <!-- Avsluttar midtstiltDesign -->
+
+        <!-- Kode -->
+        <script>
+            var inputMelding = document.getElementById("inputMelding");
+            var inputKrypteringsnokkel = document.getElementById("inputKrypteringsnokkel");
+            var outputMelding = document.getElementById("outputMelding");
+            var outputBruteForce = document.getElementById("outputBruteForce");
+            var knappKrypter = document.getElementById("knappKrypter");
+            var knappDekrypter = document.getElementById("knappDekrypter");
+            var knappBruteForce = document.getElementById("knappBruteForce");
+            //knappKrypter.addEventListener("click", krypterMelding);
+            //knappDekrypter.addEventListener("click", dekrypterMelding);
+            //knappBruteForce.addEventListener("click", bruteForce);
+
+            // Kva må me ha for å kunne forskyve? Anta me får inn ein 'a', korleis skal det med ein forskyvning på til dømes 2 bli 'c'?
+            // Skriv pseudokode
+
+            // Lag ein funksjon som får inn ein bokstav som du skal forskyve så langt som brukaren ønsker
+
+            // Lag ein funksjon som kan reversere dette, altså inn 
+
+            // Hint, hjelp: indexOf(), charAt(), ...
+
+            var setning = "hei eg heiter jo bjørnar";
+
+            // Test: Itererer gjennom ein string som om det er ein array (..det ER ein array!)
+            for(tegn of setning){
+                console.log("tegn: " + tegn);
+            }
+            // Test: Same, same, but different
+            for(let i = 0; i < setning.length; i++){
+                console.log("tegn: " + setning[i]);
+            }
+
+            // Utgangspunktet for korleis me forskyver
+            var alfabet = "abcdefghijklmnopqrstuvwxyzæøå";
+            var alfabetLengde = alfabet.length;
+            console.log("Alfabetet sin lengde er: " + alfabetLengde);
+
+            // Plasseringen til eit element
+            var posisjon = alfabet.indexOf("a");
+            console.log("Posisjonen til 'a' er. " + posisjon);
+
+            // Førsteutkast for funksjon som får inn bokstav og returnerer ny, kryptert bokstav
+            function krypterBokstav(bokstavInn,krypteringsnokkel){
+                var gammelPosisjon = alfabet.indexOf(bokstavInn);
+                var nyPosisjon = gammelPosisjon + krypteringsnokkel;
+                if(nyPosisjon>=alfabetLengde){ // handterer at me kjem utanfor "alfabetet"
+                    nyPosisjon = nyPosisjon - alfabetLengde;
+                }
+                return alfabet[nyPosisjon];
+            }
+
+            // Test av funksjonen over
+            console.log(krypterBokstav("a",1)); // returnerer "b". Neste problem: kva med å?
+            console.log(krypterBokstav("å",1)); // returnerer "undefined" dersom me fjernar if i funksjonen krypterBokstav
+            console.log(krypterBokstav("ø",2));
+        </script>
+    </body>
+</html>
