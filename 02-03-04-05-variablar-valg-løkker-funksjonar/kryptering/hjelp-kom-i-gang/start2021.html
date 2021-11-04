@@ -11,9 +11,31 @@
 
     <!-- Kode -->
     <script>
-        var alfabet = "abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ,.-_!?";
-        posisjonTilBokstav = alfabet.indexOf("b");
-        console.log(posisjonTilBokstav);
+        // Strategi nr. 1
+        const alfabet = "abcdefghijklmnopqrstuvwxyzæøå"; // ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ,.-_!?
+        //let posisjonTilBokstav = alfabet.indexOf("b");
+        //console.log(posisjonTilBokstav);
+
+        // Strategi nr. 2
+        const alfabetArray = ["a", "b", "c", "d", "e"]; //... 
+        let posisjonIArray = alfabetArray.indexOf("a");
+        console.log(posisjonIArray);
+
+        // Funksjon som returnerer den krypterte bokstaven (får inn original bokstav og krypteringsnøkkel)
+        function krypterBokstav(originalBokstav, krypteringsnøkkel) {
+            let posisjonTilBokstav = alfabet.indexOf(originalBokstav); // Plasseringen til den originale/ukrypterte bokstaven
+            let nyPosisjon = posisjonTilBokstav + krypteringsnøkkel; // Plasseringen til den nye/krypterte bokstaven
+            if (nyPosisjon >= alfabet.length) { // Handterer det at me kjem utanfor arrayen sin lengde (å -> undefined)
+                nyPosisjon = nyPosisjon - alfabet.length;
+            }
+            let nyBokstav = alfabet[nyPosisjon]; // Kva den krypterte bokstaven faktisk er 
+            //console.log("Du fekk inn bokstaven " + originalBokstav + ", og posisjonen til denne er " + posisjonTilBokstav + ".");
+            //console.log("Den nye/krypterte bokstaven sin posisjon er: " +  nyPosisjon + ", og denne bokstaven er då: " + alfabet[nyPosisjon]);
+            // Forenkla testutskrift:
+            console.log(originalBokstav + " --> " + nyBokstav);
+        }
+
+        krypterBokstav("å",2);
     </script>
 </body>
 </html>
