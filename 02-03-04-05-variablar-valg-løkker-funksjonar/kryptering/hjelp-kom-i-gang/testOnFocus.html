@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Test av onfocus</title>
+</head>
+<body>
+    <h1>Sjå console.</h1>
+    <input type="text" id="inputfelt1">
+    <input type="text" id="inputfelt2">
+
+    <script>
+        let kvaVilDuSKalGjerast = "";
+
+        document.getElementById("inputfelt1").addEventListener("focus", function() {
+            console.log("Fokus i felt 1!");
+            kvaVilDuSKalGjerast = "krypter!";
+        });
+
+        document.getElementById("inputfelt2").addEventListener("focus", function() {
+            console.log("Fokus i felt 2!");
+            kvaVilDuSKalGjerast = "dekrypter!";
+        });
+
+        document.getElementById("inputfelt1").addEventListener("click", krypter);
+        document.getElementById("inputfelt2").addEventListener("click", krypter);
+
+        function krypter(tekstInn,nokkel) {
+            console.log("krypter køyrer, du ønska: " + kvaVilDuSKalGjerast);
+            if(kvaVilDuSKalGjerast==="krypter!") {
+                forteikn = "+";
+            }
+            else {
+                forteikn = "-";
+            }
+
+            // Krypter/dekrypter
+        }
+    </script>
+</body>
+</html>
