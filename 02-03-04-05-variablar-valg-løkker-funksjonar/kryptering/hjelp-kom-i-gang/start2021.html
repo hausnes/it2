@@ -12,7 +12,7 @@
     <!-- Kode -->
     <script>
         // Strategi nr. 1
-        const alfabet = "abcdefghijklmnopqrstuvwxyzæøå"; // ABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ,.-_!?
+        const alfabet = "abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ,.-_!? "; // 
         //let posisjonTilBokstav = alfabet.indexOf("b");
         //console.log(posisjonTilBokstav);
 
@@ -29,13 +29,39 @@
                 nyPosisjon = nyPosisjon - alfabet.length;
             }
             let nyBokstav = alfabet[nyPosisjon]; // Kva den krypterte bokstaven faktisk er 
+            
             //console.log("Du fekk inn bokstaven " + originalBokstav + ", og posisjonen til denne er " + posisjonTilBokstav + ".");
             //console.log("Den nye/krypterte bokstaven sin posisjon er: " +  nyPosisjon + ", og denne bokstaven er då: " + alfabet[nyPosisjon]);
             // Forenkla testutskrift:
             console.log(originalBokstav + " --> " + nyBokstav);
+
+            return nyBokstav;
         }
 
-        krypterBokstav("å",2);
+        krypterBokstav("å",1);
+
+        function dekrypterBokstav(originalBokstav, krypteringsnøkkel) {
+            let posisjonTilBokstav = alfabet.indexOf(originalBokstav); // Plasseringen til den originale/ukrypterte bokstaven
+            let nyPosisjon = posisjonTilBokstav - krypteringsnøkkel; // Plasseringen til den nye/krypterte bokstaven
+            if (nyPosisjon < 0) { // Handterer det at me kjem utanfor arrayen sin lengde (å -> undefined)
+                nyPosisjon = nyPosisjon + alfabet.length;
+            }
+            let nyBokstav = alfabet[nyPosisjon]; // Kva den krypterte bokstaven faktisk er 
+            
+            console.log(originalBokstav + " --> " + nyBokstav);
+        }
+
+        dekrypterBokstav("b",1);
+
+        let melding = "abcheisann!";
+        let kryptertMelding = "";
+
+        for (let tegn of melding) {
+            console.log(tegn);
+            kryptertMelding += krypterBokstav(tegn,1);
+        }
+
+        document.write(kryptertMelding);
     </script>
 </body>
 </html>
