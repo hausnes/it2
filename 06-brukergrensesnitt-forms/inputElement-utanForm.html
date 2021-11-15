@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input-elementer</title>
+    <link rel="stylesheet" href="brukerinput.css">
+</head>
+<body>
+    <!-- HTML -->
+    <hr>
+    <label for="inptTekst">Fornavn:</label> <!-- NB: Merk at label for .. ref. til "name"-attributtet i linja under. Meir om name: https://www.w3schools.com/tags/att_input_name.asp -->
+    <input type="text" name="inpTekst" id="inpTekst" placeholder="NB: Skriv berre fornavnet ditt!" autofocus> <!-- NB: Legg merke til autofocus. Bruk berre på eit element. -->
+    
+    <label for="inpPassord">Passord:</label>
+    <input type="password" name="inpPassord" id="inpPassord">
+
+    <label for="inpAlder">Alder:</label>
+    <input type="number" name="inpAlder" id="inpAlder">
+
+    <label for="inpMengde">Kor tilfreds du er, frå 0 til 10:</label>
+    <br>
+    <input type="range" name="inpMengde" id="inpMengde" min="0" max="10" step="1">
+
+    <label for="inpFarge">Favorittfarge:</label>
+    <input type="color" name="inpFarge" id="inpFarge">
+
+    <label for="inpDato">Favorittdag:</label>
+    <input type="date" name="inpDato" id="inpDato">
+
+    <p>Ananas på pizza:</p>
+    <label>
+        <input type="radio" name="inpAnanas" id="inpAnanasJa" value="ja">
+        Ja
+    </label>
+    <label>
+        <input type="radio" name="inpAnanas" id="inpAnanasNei" value="nei">
+        Nei
+    </label>
+
+    <hr>
+    
+    <button type="button" id="knappHentInformasjon">Hent data!</button>
+
+    <!-- Kode -->
+    <script>
+        document.getElementById("knappHentInformasjon").addEventListener("click", hentData);
+
+        function hentData() {
+            let fornavn = document.getElementById("inpTekst").value;
+            console.log(fornavn);
+
+            let passord = document.getElementById("inpPassord").value;
+            console.log(passord);
+
+            let alder = document.getElementById("inpAlder").value;
+            console.log(alder);
+
+            let tilfreds = document.getElementById("inpMengde").value;
+            console.log(tilfreds);
+
+            let favorittFarge = document.getElementById("inpFarge").value;
+            console.log(favorittFarge);
+
+            let favorittDag = document.getElementById("inpDato").value;
+            console.log(favorittDag);
+
+            let ananasValg = "";
+            if(document.getElementById("inpAnanasJa").checked) {
+                console.log("Ananas-elskar. Bra for deg.");
+            }
+            else {
+                console.log("Ananas-hatar. Fy på deg.");
+            }
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>"evt", kva knapp?</title>
+</head>
+<body>
+    <!-- HTML -->
+    <p>
+        Trykk på ein av knappane under. Alle kallar på same funksjonen, 
+        men me kan finne ut kva knapp som blei brukt vha. <em>'evt'</em>.
+        Øvelse for deg sjølv: Lag eit liknande eks. der du har fleire
+        bileter du kan trykke på. Finn til dømes ut kva src er for det
+        biletet som blir trykt på.
+    </p>
+    <button id="knapp1">Knapp 1</button>
+    <button id="knapp2">Knapp 2</button>
+    <p id="utskrift"></p>
+
+    <!-- Kode -->
+    <script>
+        let knapp1 = document.getElementById("knapp1");
+        let knapp2 = document.getElementById("knapp2");
+
+        knapp1.addEventListener("click", samlaFunksjon);
+        knapp2.addEventListener("click", samlaFunksjon);
+
+        function samlaFunksjon(evt) {
+            let kvaKnappStartaFunksjonen = evt.target;
+            console.log("Du trykte på: " + kvaKnappStartaFunksjonen.id);
+            document.getElementById("utskrift").innerHTML = "Du trykte på: " + kvaKnappStartaFunksjonen.id;
+        }
+    </script>
+</body>
+</html>
