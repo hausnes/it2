@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        let antallMinutter = parseInt(prompt("Kor mange minutter skal reknast om til timar og minutter?"));
+        
+        // Frå minutter til timar og minutter
+        let antTimar = antallMinutter / 60;
+        if (antTimar < 1) {
+            antTimar = 0;
+        }
+        antRestMinutter = antallMinutter % 60; // Kor mykje blir i rest etter at du har delt på 60?
+        console.log("Timar: " + Math.round(antTimar) + ", minutter: " + antRestMinutter);
+
+        // Frå sekunder til timar, minutt og sekund
+        let totalSekunder = 3663;
+        let timar = Math.floor(totalSekunder/3600);
+        totalSekunder = totalSekunder % 3600;
+        let minutter = Math.floor(totalSekunder/60);
+        let sekunder = totalSekunder % 60;
+        console.log("Timar:    " + timar + " \nMinutter: " + minutter + " \nSekunder: " + sekunder);
+    </script>
+</body>
+</html>
