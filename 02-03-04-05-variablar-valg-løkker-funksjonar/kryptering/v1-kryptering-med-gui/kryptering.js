@@ -9,7 +9,7 @@ var inputMelding = document.getElementById("inputMelding");
             knappDekrypter.onclick = f_dekrypterMelding;
             knappBruteForce.onclick = f_bruteForce;
 
-            var alfabet = "abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ,.-_!?";
+            var alfabet = "0123456789abcdefghijklmnopqrstuvwxyzæøåABCDEFGHIJKLMNOPQRSTUVWXYZÆØÅ,.-_!?";
             var alfabetLengde = alfabet.length;
             console.log(alfabetLengde);
                 
