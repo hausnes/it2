@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Forms/skjema</title>
+    <link rel="stylesheet" href="brukerinput.css">
+</head>
+<body>
+    <!-- HTML -->
+    <h1>Forms/skjema</h1>
+    <p>Eit grunnleggande eksempel på forms/skjema</p>
+
+    <form id="formFlyreise">
+        <label for="epost">E-post:</label>
+        <input type="email" name="epost" id="epost" required>
+        
+        <label for="alder">Alder:</label>
+        <input type="number" name="alder" id="alder" min="4" max="88" required>
+        
+        <br>
+        <button type="submit">Søk og bestill</button>
+    </form>
+
+    <!-- Kode -->
+    <script>
+        let formFlyreise = document.getElementById("formFlyreise");
+        formFlyreise.addEventListener("submit", leverInn); // NB, NB, NB! Ikkje click. Ikkje på knappen! Høyrte du? Ikkje på knappen!!!
+
+        function leverInn(evt) {
+            evt.preventDefault();
+            let epost = document.getElementById("epost").value;
+            console.log("E-post: " + epost);
+            let alder = document.getElementById("alder").value;
+            console.log("Alder: " + alder);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,21 @@
+<label for="velgFlyplassUtreise">Fly fra</label>
+<select id="Flyplasser" required>
+        <option value="">Velg flyplass</option>
+        <option value="BGO">Bergen</option>
+        <option value="OSL">Oslo</option>
+        <option value="TRD">Trondheim</option>
+</select>
+
+<label for="velgFlyplassRetur">Fly til</label>
+<select id="Flyplasser" required>
+        <option value="">Velg flyplass</option>
+        <option value="BGO">Bergen</option>
+        <option value="OSL">Oslo</option>
+        <option value="TRD">Trondheim</option>
+</select>
+
+<label for="inpUtDato">Dato for utreise</label></p>
+<input type="date" id="inpUtDato" placeholder="Utreise" required>
+
+<label for="inpReturDato">Dato for retur</label></p>
+<input type="date" id="inpReturDato" required>

@@ -1,0 +1,80 @@
+/* Per Henrik */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Helvetica, sans-serif;
+}
+html {
+    height: 100%;
+    width: 100%;
+}
+body {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    background: rgba(210, 210, 210, 0.2);
+}
+header {
+    height: 15%;
+    width: 100%;
+    display: grid;
+    place-items: center;
+}
+h1 {
+    font-size: 5rem;
+}
+.container {
+    height: 70%;
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    align-items: center;
+    gap: 0px 0px;
+    grid-auto-flow: row;
+    grid-template-areas:
+        "text key"
+        "returns returns";
+}
+.container > * {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    height: 50%;
+}
+
+.text {
+    grid-area: text;
+}
+
+.key {
+    grid-area: key;
+}
+
+.returns {
+    grid-area: returns;
+}
+label {
+    font-size: 3rem;
+}
+input {
+    font-size: 4rem;
+    padding: 3rem 0.5rem;
+    height: 60%;
+    width: 80%;
+    border: 0.5rem solid black;
+    background: rgb(210, 210, 210);
+}
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+input:focus-visible {
+    outline: none;
+}
