@@ -1,0 +1,14 @@
+/* NB: LAGA AV EIRIK SOLBERG */
+
+hr{
+    visibility: hidden;
+}
+ /*Jeg har valgt å gjøre hr usynlig fordi dette hjelper med å space content fint utover... */
+button{
+    border: none;
+    background-color: white;
+}
+
+img{
+    width: 50px;
+}

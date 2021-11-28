@@ -1,0 +1,43 @@
+<!-- NB: LAGA AV EIRIK SOLBERG -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oppgave 4</title>
+    <link rel="stylesheet" href="vervepremier.css">
+</head>
+<body>
+    <h1>Vervepremier!</h1>
+    <p>Skriv under navn på personene du har vervet:</p>
+
+    <!-- Lager 3 skrivefelt med korresponderende knapper-->
+    <label for="vervPerson1" id="labelForVervPerson1">Person 1:</label>
+    <input type="text" id="vervPerson1">
+    <input type="button" value="Submit" id="submitPerson1">
+    <hr>
+    <label for="vervPerson2" id="labelForVervPerson2">Person 2:</label>
+    <input type="text" id="vervPerson2">
+    <input type="button" value="Submit" id="submitPerson2">
+    <hr>
+    <label for="vervPerson3" id="labelForVervPerson3">Person 3:</label>
+    <input type="text" id="vervPerson3">
+    <input type="button" value="Submit" id="submitPerson3">
+    <hr>
+
+    <!-- Bilder av premiene m/mer... disse skjules i JS før de igjen vises når bruker har vervet noen-->
+    <h1 id="overskriftPremier"></h1>
+    <button id="premie1"><img id="premie1Bilde" src="bilder/speakers.svg"></button>
+    <button id="premie2"><img id="premie2Bilde" src="bilder/watch.svg"></button>
+    <button id="premie3"><img id="premie3Bilde" src="bilder/pizza.svg"></button>
+    <hr>
+    <input type="button" id="submitKnapp" value="Lever inn">
+
+    <h1 id="overskriftPremierPaaVei"></h1>
+    <p id="infoPremierPaaVei"></p>
+
+    <!-- Link til JS-dokument-->
+    <script src="vervepremier.js"></script>
+</body>
+</html>
