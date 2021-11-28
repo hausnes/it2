@@ -1,0 +1,29 @@
+body {
+    font-size: 1.3em;
+}
+
+ul {
+    width: 250px;
+    list-style-type: none;
+}
+
+li {
+    padding: 10px;
+    border: 1px solid black;
+    border-collapse: collapse;
+}
+
+.cowabungaHadouken {
+    color: red;
+    background-color: black;
+}
+
+.cowabunga {
+    color: yellow;
+    background-color: blue;
+}
+
+.hadouken {
+    color: white;
+    background-color: black;
+}
