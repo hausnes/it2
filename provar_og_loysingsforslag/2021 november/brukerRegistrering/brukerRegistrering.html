@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Brukerregistrering</title>
+    <link rel="stylesheet" href="brukerRegistrering.css">
+    <link rel="stylesheet" href="brukerinput.css">
+</head>
+<body>
+    <!-- HTML -->
+    <main>
+        <div id="venstre">
+            <form id="skjemaRegistrering">
+                <label for="inpBrukernavn">Brukernavn:</label>
+                <input id="inpBrukernavn" type="text" placeholder="Ikkje bruk ekle ord som 'tiss' og 'promp'!" autofocus required>
+
+                <label for="inpEpost">E-post:</label>
+                <input type="email" id="inpEpost" placeholder="dittbrukernavn@domene.no" required>
+
+                <label for="inpPassord">Passord:</label>
+                <input type="password" id="inpPassord" placeholder="Min: 5, maks: 15" maxlength="15" minlength="5" required>
+
+                <p>Profilbilete:</p>
+                    <label>
+                        <input type="radio" name="inpProfil" id="inpProfilSnowman" value="snowman" checked>
+                        <img src="bileter/snowman.png" alt="">
+                    </label>
+                    <label>
+                        <input type="radio" name="inpProfil" id="inpProfilSanta" value="santa">
+                        <img src="bileter/santa.png" alt="">
+                    </label>
+                    <label>
+                        <input type="radio" name="inpProfil" id="inpProfilStar" value="star">
+                        <img src="bileter/star.png" alt="">
+                    </label>
+                </p>
+                
+                <p>Interesser:</p>
+                <input type="checkbox" id="hest" name="interesser" value="hest">
+                <label for="hest">Hestar!</label>
+                
+                <input type="checkbox" id="lyttefunksjonar" name="interesser" value="lyttefunksjonar">
+                <label for="lyttefunksjonar">Lyttefunksjonar</label>
+
+                <input type="checkbox" id="raudekorkar" name="interesser" value="raudekorkar">
+                <label for="raudekorkar">Raude korkar</label>
+                <br><br>
+
+                <button type="submit">Registrer deg!</button>
+            </form>
+        </div>
+        <div id="hogre">
+            <p>
+                Fyll ut skjemaet til venstre, og fylgj instruksjonane!
+                <ul>
+                    <li>Ikkje bruk ord som "tiss" og "promp" i brukernavn.</li>
+                    <li>Passord mellom 5 og 15 teikn.</li>
+                </ul>
+            </p>
+            <div id="utskrift">
+                <!-- Fylles ut av JS etter og under at reg. er fylt ut. -->
+                <header>
+                    <h1 id="brukernavn">Brukernavn</h1>
+                </header>
+                <figure>
+                    <img id="profilbilete" src="bileter/santa.png" alt="">
+                </figure>
+                <p>E-post:<span id="epost">_____________</span></p>
+                <p>Interesser:</p>
+                <ul id="interesser">
+                    <li>________</li>
+                    <li>________</li>
+                    <li>________</li>
+                </ul>
+            </div> <!-- avsluttar utskrift-elementet -->
+        </div> <!-- avsluttar "hogre" -->
+    </main>
+
+    <!-- Kode -->
+    <script src="brukerRegistrering.js"></script>
+</body>
+</html>
