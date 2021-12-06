@@ -8,7 +8,7 @@ function registrerBruker(evt) {
     let brukernavn = document.getElementById("inpBrukernavn").value;
     let epost = document.getElementById("inpEpost").value;
     
-    if (brukernavn.includes("promp") || brukernavn.includes("tiss")) { // Dersom brukernavnet inneheld stygge ord
+    if (brukernavn.toLowerCase().includes("promp") || brukernavn.includes("tiss")) { // Dersom brukernavnet inneheld stygge ord
         alert("Ikkje promp og tiss, takk!");
     }
     else if (opptattEpost.includes(epost)) { // Dersom e-posten er opptatt
