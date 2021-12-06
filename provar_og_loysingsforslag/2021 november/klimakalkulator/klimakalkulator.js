@@ -22,7 +22,7 @@ function klimaKontroll(evt) {
     let totaltAvtrykk = CO2grunnavtrykk + (CO2kjott * antKjott) + (CO2fisk * antFisk) + (CO2vegetar * antVegetar) + (CO2flyreise * antFlyreiser);
     console.log("Total CO2: " + totaltAvtrykk);
 
-    utskrift.innerHTML =  "Totalt CO2-nivå: <em>" + totaltAvtrykk.toFixed(2) + " tonn/år</em>";
+    utskrift.innerHTML =  "Totalt CO2-nivå: <em>" + totaltAvtrykk.toFixed(3) + " tonn/år</em>";
     let betegnelse = "";
     if (totaltAvtrykk < 6){
         betegnelse = "klimaengel";
