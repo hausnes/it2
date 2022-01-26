@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<head>
+    <title>Skalere bileter</title>
+    <meta charset="UTF-8">
+</head>
+<body>
+    <h1>Skalere bileter</h1>
+    <p>Same bilete med ein original oppløysning på 1920x1080 pikslar. Endre dette vha. knappane som endrar skaleringa (width).</p>
+    <button id="endreStrW200"  data-str="200">Width=200px</button>
+    <button id="endreStrW600"  data-str="600">Width=600px</button>
+    <button id="endreStrW1080" data-str="1080">Width=1080px (original)</button>
+    <button id="endreStrW2000" data-str="2000">Width=2000px</button>
+    <div>
+        <img src="bileter/utsikt.jpg" id="bilde" width="400px">
+    </div>
+    
+    <script>
+        var endreStrW200  = document.getElementById("endreStrW200");
+        var endreStrW600  = document.getElementById("endreStrW600");
+        var endreStrW1080 = document.getElementById("endreStrW1080");
+        var endreStrW2000 = document.getElementById("endreStrW2000");
+        var bilde = document.getElementById("bilde");
+
+        endreStrW200.onclick = endreStrW600.onclick = endreStrW1080.onclick = endreStrW2000.onclick = f_endreStr;
+
+        function f_endreStr(evt){
+            var storrelseValgt = evt.target; 
+            var storrelse = storrelseValgt.getAttribute("data-str"); 
+            f_skalerStr(storrelse);
+        }
+
+        function f_skalerStr(bredde){
+            bilde.style.width = bredde + "px";
+        }
+    </script>
+</body>
+
+</html>

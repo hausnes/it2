@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Keyboard!</title>
+    </head>
+    <body>
+        <div id="keyboard"></div>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/qwerty-hancock/0.6.0/qwerty-hancock.min.js"></script>
+        <script>
+        
+        var keyboard = new QwertyHancock({ //Tegner opp keyboardet
+            id: 'keyboard',
+            width: 600,
+            height: 150,
+            octaves: 2,
+            startNote: 'A3',
+            whiteNotesColour: 'white',
+            blackNotesColour: 'black',
+            hoverColour: '#f3e939'
+        });
+
+        var lyder = new Map(); //En map for å lagre hvilke lyder vi har startet
+        var ac = new AudioContext();
+        keyboard.keyDown = function (note, frequency) { //Trykk ned tangent
+            console.log("note: " + note + " frequency: " + frequency)
+            var osc = ac.createOscillator();
+            osc.frequency.value = frequency; //Setter frekvens NB: Utdatert måte å gjere det på, jfr. feilmelding i Chrome.
+            osc.connect(ac.destination);
+            osc.start(ac.currentTime);
+            lyder.set(note, osc); //Legger lyden i en map
+            };
+        keyboard.keyUp = function (note, frequency) { //Slipp opp tangent
+                lyder.get(note).stop(ac.currentTime); //Stopper lyd
+        };
+
+            
+        </script>
+    </body>
+</html>

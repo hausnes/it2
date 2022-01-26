@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<head>
+    <title>Tekst og bileter med absolutt posisjonering</title>
+    <meta charset="UTF-8">
+    <style>
+        #bilderamme{
+            width: 475px;
+            height: 345px;
+            border: 1px solid dimgray;
+            overflow: hidden;
+            margin: 50px auto;
+        }
+        #imgPing{
+            cursor: zoom-in;
+            width: 475px;
+        }
+    </style>
+</head>
+<body>
+    <div id="bilderamme">
+        <img id="imgPing" src="bileter/utsikt.jpg">
+    </div>    
+    
+    <script>
+        var imgPing = document.getElementById("imgPing");
+        var bilderamme = document.getElementById("bilderamme");
+        imgPing.onmousemove = function(evt){ // Boka bruker onmouseover
+            imgPing.style.width = "1920px";
+            imgPing.style.marginLeft = 3*(-evt.clientX+bilderamme.offsetLeft)+"px";
+            imgPing.style.marginTop = 3*(-evt.clientY+bilderamme.offsetTop)+"px";
+            imgPing.style.cursor = "zoom-in";
+        }
+        imgPing.onmouseout = function(){
+            imgPing.style.width = "475px";
+            imgPing.style.marginLeft = 0;
+            imgPing.style.marginTop = 0;
+        }
+    </script>
+</body>
+
+</html>

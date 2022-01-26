@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<head>
+    <title>Tekst og bileter med absolutt posisjonering</title>
+    <meta charset="UTF-8">
+    <style>
+        .banner{
+            width: 80%;
+            height: auto;
+            position: relative;
+            margin: 0 auto;
+        }
+
+        #bakgrunn{
+            position: absolute;
+            width: 100%;
+            left: 0;
+            top: 0;
+        }
+        #teksten{
+            position: absolute;
+            font-family: "Arial Black", arial, sans-serif;
+            left: 350px;
+            top: 50px;
+            color: red;
+            font-size: 40px;
+        }
+        #logo{
+            position: absolute;
+            right: 75px;
+            top: 25px;
+        }
+        p{
+            width: 600px;
+            margin: 0 auto;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <p>
+        <input id="inpTittel" type="text" placeholder="Tekst på biletet" required>
+        <button id="knapp">Endre tekst</button>
+    </p>
+    <article class="banner">
+        <img id="bakgrunn" src="bileter/utsikt-600x395.jpg">
+        <span id="teksten" id="txtBiletoverskrift">Hardanger</span>
+        <img id="logo" src="bileter/hardanger_logo.png" width="100px">
+    </article>    
+    
+    <script>
+        var knapp = document.getElementById("knapp");
+        knapp.addEventListener("click", f_endreTekst);
+
+        var teksten = document.getElementById("teksten");
+
+        function f_endreTekst(){
+            let innhentaTekst = document.getElementById("inpTittel").value;
+            teksten.innerHTML = innhentaTekst;
+        }
+    </script>
+</body>
+
+</html>
