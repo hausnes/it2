@@ -24,12 +24,14 @@
     <script>
         var imgPing = document.getElementById("imgPing");
         var bilderamme = document.getElementById("bilderamme");
-        imgPing.onmousemove = function(evt){ // Boka bruker onmouseover
+        //imgPing.onmousemove = function(evt){ // Boka bruker onmouseover
+        document.getElementById("imgPing").addEventListener("mousemove", function(evt) {
             imgPing.style.width = "1920px";
             imgPing.style.marginLeft = 3*(-evt.clientX+bilderamme.offsetLeft)+"px";
             imgPing.style.marginTop = 3*(-evt.clientY+bilderamme.offsetTop)+"px";
             imgPing.style.cursor = "zoom-in";
         }
+        );
         imgPing.onmouseout = function(){
             imgPing.style.width = "475px";
             imgPing.style.marginLeft = 0;
