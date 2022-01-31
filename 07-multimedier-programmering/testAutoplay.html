@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <audio id="lyd" src="audio/piano.mp3" controls autoplay></audio>
+
+    <script>
+        let lyd = document.getElementById("lyd");
+        let godtaLyd = prompt("Godtar du lyd?");
+        if (godtaLyd.toLowerCase().includes("ja")){
+            lyd.load("audio/piano.mp3");
+            lyd.play();
+        }
+    </script>
+</body>
+</html>
