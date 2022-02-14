@@ -20,18 +20,18 @@ const skryteOrd = [
 ];
 
 let person = prompt("Hvem vil du skryte av?");
-let antallSkrytOrd = parseInt(prompt("Hvor mange skryteord?"));
+let antallSkryteord = parseInt(prompt("Hvor mange skryteord?"));
 
-function skrytAv(person, antallSkrytOrd) {
+function skrytAv(person, antallSkryteord) {
     let skryteSetning = "Kjære, <span class='navn'>" + person + "</span>!<br> Du er ";
-    for (let i = 0; i < antallSkrytOrd; i++) {
+    for (let i = 0; i < antallSkryteord; i++) {
         let plassering = tilfeldigTall(0,skryteOrd.length-1);
         let utvaltOrd = skryteOrd[plassering];
         skryteOrd.splice(plassering,1);
-        if (i === antallSkrytOrd-2) {
+        if (i === antallSkryteord-2) {
             skryteSetning += utvaltOrd + " ";
         }
-        else if (i === antallSkrytOrd-1) {
+        else if (i === antallSkryteord-1) {
             skryteSetning += " og " + utvaltOrd + ".";
         }
         else {
@@ -42,7 +42,7 @@ function skrytAv(person, antallSkrytOrd) {
     document.getElementById("skrytUt").innerHTML = skryteSetning;
 }
 
-skrytAv(person, antallSkrytOrd);
+skrytAv(person, antallSkryteord);
 
 function tilfeldigTall(min, max) {
     min = Math.ceil(min);

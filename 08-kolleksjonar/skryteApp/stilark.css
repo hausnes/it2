@@ -17,7 +17,7 @@ h1 {
     font-size: 3em;
 }
 
-.navn {
+.navn { /* For å kunne utheve navnet til den du skal skryte av. */
     color: red;
     font-size: 3.2em;
 }
@@ -87,4 +87,3 @@ h1 {
     -o-transform-origin: 100% 100%;
     transform-origin: 100% 100%;
 }
-  
