@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Elevar og karakterar</title>
+    <style>
+        /* TABELL https://www.w3schools.com/css/css_table.asp */ 
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        tr:nth-child(even){background-color: #f2f2f2;}
+        tr:hover {background-color: #ddd;}
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        /* SIDEOPPSETT: flexbox */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Brukargrensesnitt */
+        button {
+            width: 250px;
+            padding: 20px;
+            background-color: lightblue;
+        }
+        input {
+            width: 250px;
+            padding: 20px;
+        }
+        select {
+            width: 53%;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="midtstilt">
+        <div>
+            <input type="text" placeholder="Hvem skal slettes?">
+            <button id="btnSlettBruker">Slett elev</button>
+        </div>
+        <br>
+        <div>
+            <input type="text" placeholder="Hvem skal legges til?">
+            <button id="btnLeggTilBruker">Legg til elev</button>
+        </div>
+        <br>
+        <div id="utskrift">
+            <!-- Utskrift generert i JS -->
+        </div>
+        <br><br>
+        <div>
+            <select id="velgSortering">
+                <option value="">Velg sortering</option>
+                <option value="navn">Navn</option>
+                <option value="karakter">Karakter</option>
+            </select>
+            <button id="btnSkrivUtSortertListe">Sorter liste</button>
+        </div>
+    </div>
+
+    <!-- Kode -->
+    <script>
+        document.getElementById("btnSlettBruker").addEventListener("click", slettBrukar);
+        document.getElementById("btnSkrivUtSortertListe").addEventListener("click", skrivUtSortertListe);
+
+        var elevene = [  
+            {navn : "Amanda" , karakter : 4}, 
+			{navn : "Ole" , karakter : 3}, 
+			{navn : "Reidun" , karakter : 6}, 
+			{navn : "Jan" , karakter : 5},
+            {navn : "Jo Bjarne", karakter : 2},
+            {navn : "Jo Bjørnar", karakter : 1}
+		];
+
+        skrivUtTab(elevene);
+
+        // Funksjon som slettar ein gitt brukar.
+        // Skriv den om slik at den kan slette den eleven som brukaren ynskjer (hint: parameter til funksjon).
+        function slettBrukar() {
+            for (let i=0; i < elevene.length; i++) {
+                if(elevene[i].navn === "Jo Bjørnar") {
+                    elevene.splice(i,1);
+                    break;
+                }
+            }
+            skrivUtTab(elevene);
+        }
+
+        // Utskrift av HTML-tabell. NB: Legg merke til CSS-innstillingane.
+        function skrivUtTab(arrayInn){
+            document.getElementById("utskrift").innerHTML = ""; // Tømmer først det som var der frå før
+            var HTMLtabell = "<table><tr><th>Elev</th><th>Karakter</th></tr>";
+            for(elev of arrayInn) {
+                //console.log(elev.navn + ": " + elev.karakter);
+                HTMLtabell += "<tr><td>" + elev.navn + "</td><td>" + elev.karakter + "</td></tr>";
+            }
+            HTMLtabell += "</table>";
+            document.getElementById("utskrift").innerHTML += HTMLtabell;
+        }
+
+        function leggTilBruker() {
+            // Skriv koden sjølv (baser deg gjerne på eks. frå timen 1. desember)
+            // Bruk form (skjema)
+        }
+
+        function endreBrukerdata() {
+            // Skriv koden som lar deg endre på innhaldet som allerede eksisterer (baser deg gjerne på eks. frå timen 1. desember)
+        }
+
+        // Funksjon som sorterer arrayen gitt ønske fra brukeren.
+        // Ta til dømes inn kva det skal sorterast på som parameter, og skriv deretter ut til HTML.
+        function skrivUtSortertListe(){
+            // Skriv koden som lar deg sortere (baser deg gjerne på eks. frå timen 1. desember)
+            // Hugs "slice" dersom du vil ta vare på originalrekkefylgja i arrayen
+        }
+
+        /* 
+            Tips til vidare oppgåver:
+            - La brukaren få sjå karakterar over, under eller mellom verdiar han eller ho ynskjer.
+            - Legge til fleire datatypar i arrayen med objekt, til dømes for kva fag det gjeld eller liknande. Må koden du allerede har skrive bli endra mykje i så tilfelle?
+            - Bruke forms/skjema for input for å betre brukaropplevelsen
+            - Forbetre brukargrensesnittet (CSS, flexbox eller liknande)
+            - Er det andre ting du kunne tenkt deg å legge til?
+        */
+    </script>
+</body>
+</html>

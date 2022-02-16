@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Elevar og karakterar</title>
+    <style>
+        /* TABELL https://www.w3schools.com/css/css_table.asp */ 
+        table {
+            font-family: Arial, Helvetica, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+        }
+        td, th {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+        tr:nth-child(even){background-color: #f2f2f2;}
+        tr:hover {background-color: #ddd;}
+        th {
+            padding-top: 12px;
+            padding-bottom: 12px;
+            text-align: left;
+            background-color: #4CAF50;
+            color: white;
+        }
+        /* SIDEOPPSETT: flexbox */
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+        /* Brukargrensesnitt */
+        button {
+            width: 250px;
+            padding: 20px;
+            background-color: lightblue;
+        }
+        input {
+            width: 250px;
+            padding: 20px;
+        }
+        select {
+            width: 53%;
+            padding: 20px;
+        }
+    </style>
+</head>
+<body>
+    <div id="midtstilt">
+        <div>
+            <form id="formSlettElev">
+                <input id="inpElevSlett" type="text" placeholder="Hvem skal slettes?" required>
+                <button type="submit" id="btnSlettBruker">Slett elev</button>
+            </form>
+        </div>
+        <br>
+        <div>
+            <form id="formLeggTilElev">
+                <input id="inpElevLeggTil" type="text" placeholder="Hvem skal legges til?" required>
+                <button id="btnLeggTilElev">Legg til elev</button>
+            </form>
+        </div>
+        <br>
+        <div>
+            <form id="formEndreElev">
+                <input id="inpElevEndre" type="text" placeholder="Hvem vil du endre?" required>
+                <button id="btnEndre">Endre</button>
+            </form>
+        </div>
+        <br>
+        <div id="utskrift">
+            <!-- Utskrift generert i JS -->
+        </div>
+        <br><br>
+        <div>
+            <select id="velgSortering">
+                <option value="">Velg sortering</option>
+                <option value="navn">Navn</option>
+                <option value="karakter">Karakter</option>
+            </select>
+            <button id="btnSkrivUtSortertListe">Sorter liste</button>
+        </div>
+    </div>
+
+    <!-- Kode -->
+    <script>
+        document.getElementById("btnSkrivUtSortertListe").addEventListener("click", skrivUtSortertListe);
+        document.getElementById("formSlettElev").addEventListener("submit", slettElev);
+        document.getElementById("formLeggTilElev").addEventListener("submit", leggTilElev);
+        document.getElementById("formEndreElev").addEventListener("submit", endreElev);
+
+        var elevene = [  
+            {navn : "Amanda" , karakter : 4}, 
+			{navn : "Ole" , karakter : 3}, 
+			{navn : "Reidun" , karakter : 6}, 
+			{navn : "Jan" , karakter : 5},
+            {navn : "Jo Bjarne", karakter : 2},
+            {navn : "Jo Bjørnar", karakter : 1}
+		];
+
+        skrivUtTab(elevene);
+
+        // Funksjon som slettar ein gitt brukar.
+        function slettElev(evt) {
+            evt.preventDefault();
+            let elev = document.getElementById("inpElevSlett").value;
+
+            // NB: Treng du ein meir avansert og "moderne" måte å gjere det på? Les meir: https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array-contains-an-object-with-an-attribute-that-e
+            // Berre lagt opp til testing her.
+            if (elevene.some(e => e.navn === elev)) {
+                console.log("Fant brukaren.");
+                // Sjølve slettinga skjer her! Slik me har vore gjennom i timane.
+                for (let i = 0; i < elevene.length; i++) {
+                    if(elevene[i].navn === elev) {
+                        elevene.splice(i,1);
+                        break;
+                    }
+                }
+                skrivUtTab(elevene);
+            }
+            else {
+                console.log("Fant ikkje brukaren.");
+            }
+        }
+
+        // Utskrift av HTML-tabell. NB: Legg merke til CSS-innstillingane.
+        function skrivUtTab(arrayInn){
+            document.getElementById("utskrift").innerHTML = ""; // Tømmer først det som var der frå før
+            var HTMLtabell = "<table><tr><th>Elev</th><th>Karakter</th></tr>";
+            for(elev of arrayInn) {
+                //console.log(elev.navn + ": " + elev.karakter);
+                HTMLtabell += "<tr><td>" + elev.navn + "</td><td>" + elev.karakter + "</td></tr>";
+            }
+            HTMLtabell += "</table>";
+            document.getElementById("utskrift").innerHTML += HTMLtabell;
+        }
+
+        function leggTilElev(evt) {
+            evt.preventDefault();
+            let nyttNavn = document.getElementById("inpElevLeggTil").value;
+            //let nyKarakter = getRandomIntInclusive(1,6); // Les typisk denne inn frå eige tekstfelt
+            let nyKarakter = parseInt(prompt("Skriv inn karakter til eleven:"));
+            let nyElev = {
+                navn: nyttNavn,
+                karakter: nyKarakter
+            };
+            elevene.push(nyElev);
+            
+            // Oppdaterer HTML-tabellen
+            skrivUtTab(elevene);
+        }
+
+        function endreElev(evt) {
+            evt.preventDefault();
+            let elevSomSkalEndrastNavn = document.getElementById("inpElevEndre").value;
+            let nyttNavn = prompt("Kva vil du endre navnet til?");
+            let nyKarakter = parseInt(prompt("Kva skal karakteren endrast til?"));
+            
+            // Dersom navn
+            for (let i = 0; i < elevene.length; i++) {
+                if(elevene[i].navn === elevSomSkalEndrastNavn) {
+                    elevene[i].navn = nyttNavn;
+                    elevene[i].karakter = nyKarakter;
+                    break;
+                }
+            }
+
+            // Dersom ID
+            let elevSomSkalEndrastID = 0;
+
+            // Oppdaterer utskrift etter endring
+            skrivUtTab(elevene);
+        }
+
+        // Funksjon som sorterer arrayen gitt ønske fra brukeren.
+        // Ta til dømes inn kva det skal sorterast på som parameter, og skriv deretter ut til HTML.
+        function skrivUtSortertListe(){
+            // Skriv koden som lar deg sortere (baser deg gjerne på eks. frå timen 1. desember)
+            // Hugs "slice" dersom du vil ta vare på originalrekkefylgja i arrayen
+
+            let typeSortering = document.getElementById("velgSortering").value;
+            if (typeSortering === "karakter") {
+                elevene.sort(function(a, b) { 
+                    return a.karakter - b.karakter; //Sorterer med laveste karakter først 
+                });
+
+            }
+            else if (typeSortering === "navn") {
+                elevene.sort(function(a, b) {
+                    const navnA = a.navn.toUpperCase();
+                    const navnB = b.navn.toUpperCase();
+                    let comparison = 0;
+                    if (navnA > navnB) {
+                        comparison = 1;
+                    } else if (navnA < navnB) {
+                        comparison = -1;
+                    }
+                    return comparison;
+                });
+            }
+            else {
+                alert("Velg å sortere på navn eller karakter.");
+            }
+            // Etter at sorteringa er gjort, skriv me ut HTML-tabell på ny
+            skrivUtTab(elevene);
+        }
+
+        function getRandomIntInclusive(min, max) { // https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Math/random
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1) + min); //The maximum is inclusive and the minimum is inclusive 
+        }
+
+        /* 
+            Tips til vidare oppgåver:
+            - La brukaren få sjå karakterar over, under eller mellom verdiar han eller ho ynskjer.
+            - Legge til fleire datatypar i arrayen med objekt, til dømes for kva fag det gjeld eller liknande. Må koden du allerede har skrive bli endra mykje i så tilfelle?
+            - Bruke forms/skjema for input for å betre brukaropplevelsen
+            - Forbetre brukargrensesnittet (CSS, flexbox eller liknande)
+            - Er det andre ting du kunne tenkt deg å legge til?
+        */
+    </script>
+</body>
+</html>
