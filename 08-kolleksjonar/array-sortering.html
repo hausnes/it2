@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Sortering</title>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-color: lightskyblue;
+        }
+        #midtstilt {
+            width: 650px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 20px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Innhald -->
+    <div id="midtstilt">
+        Sjå console.
+    </div> <!-- Avslutter midtstilt -->
+
+    <!-- Kode -->
+    <script>
+        var tabFargar = ["red","blue","green","pink","White","yellow","lightsteelblue","orange"];
+        var tabOrd = ["ball","trall","Knall","hall","rall","kall","tall","Fall"];
+        var tabTall = [1,4,22,2,5,10,13,12,3,11,9,8,7,6];
+        
+        console.log("Usortert: " + tabFargar);
+        console.log("Usortert: " + tabOrd);
+        console.log("Usortert: " + tabTall);
+
+        tabFargar.sort();
+
+        tabOrd.sort(function(a,b) {
+            a = a.toUpperCase();
+            b = b.toUpperCase();
+            return b<a;
+        });
+
+        tabTall.sort(function(a,b) {
+            console.log( "Samanliknar " + a + ",  " + b );
+            return a - b;
+        });
+
+        console.log("Sortert: " + tabFargar);
+        console.log("Sortert: " + tabOrd);
+        console.log("Sortert: " + tabTall);
+    </script>
+</body>
+</html>
