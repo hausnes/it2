@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kap. 8 - Array</title>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-color: lightskyblue;
+        }
+        #midtstilt {
+            width: 650px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 20px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Innhald -->
+    <div id="midtstilt">
+        <div id="ut"></div>
+    </div> <!-- Avslutter midtstilt -->
+
+    <!-- Kode -->
+    <script> 
+        var ut = document.getElementById("ut");
+        
+        var elevene = [  
+            {navn : "Amanda" , karakter : 4}, 
+			{navn : "Ole" , karakter : 3}, 
+			{navn : "Reidun" , karakter : 6}, 
+			{navn : "Jan" , karakter : 5},
+            {navn : "Jo Bjarne", karakter : 2}
+		];
+        
+        // Generell utskrift (bruker funksjon for alle dei andre utskriftene, fordi me ser at dette må me gjere igjen og igjen)
+        ut.innerHTML = "<h1>Generell utskrift:</h1><p>";
+        for(var elev of elevene) { 
+            ut.innerHTML += elev.navn + " fikk karakteren " + elev.karakter + ".<br>"; 
+        }
+        ut.innerHTML += "</p>";
+
+        // Eksempel på korleis du kan endre data:
+        elevene[3].navn = "Janny"; // Frå 'Jan' til 'Janny'
+
+        console.log("elevene[2]: " + elevene[2]); // NB: Returnerer berre at det er 'object'. Du må spesifisere kva data for objektet, eksempelvis 'elevene[2].navn'.
+
+        // Eksempel på korleis du kan legge til nye data:
+        var nyElev = {
+            navn: "Nye Lev", karakter: 4
+        };
+        elevene.push(nyElev);
+
+        var nyElev2 = { 
+            navn: "Jo Bjørnar", karakter: 1 
+        }; 
+        elevene.push(nyElev2);
+        console.log(elevene);
+
+        // Eksempel på sortering
+        // LES MEIR: https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
+        
+        // 1: Sortere på karakter 
+        var sortertKarakter = elevene.slice().sort(function(a, b) { 
+            return a.karakter - b.karakter; // Sorterer med laveste karakter først 
+        });
+        skrivUtArray(sortertKarakter,"karakter");
+        
+        // 2: Sortere basert på navn (String, altså), inne i array med objekt.
+        var sortertNavnEks1 = elevene.slice().sort(function(a, b) { // Dette fungerer ikkje på direkten. Sjå koden rett under.
+            return a.navn - b.navn;
+        });
+        skrivUtArray(sortertNavnEks1,"navn (eks. 1, med feil)");
+        
+        // 3: Ein funksjon som sorterer på navn, ordentlig. Les meir: https://www.sitepoint.com/sort-an-array-of-objects-in-javascript/
+        var sortertNavnEks2 = elevene.slice().sort(function(a, b) {
+            const navnA = a.navn.toUpperCase();
+            const navnB = b.navn.toUpperCase();
+            let comparison = 0;
+            if (navnA > navnB) {
+                comparison = 1;
+            } else if (navnA < navnB) {
+                comparison = -1;
+            }
+            return comparison;
+        });
+        skrivUtArray(sortertNavnEks2,"navn (eks. 2)");
+
+        // Ein generell funksjon som skriv ut ein array, inkl. informasjon om kva ein sorterer på
+        function skrivUtArray(arrayInn,type) {
+            ut.innerHTML += "<h2>Sortert basert på " + type + ":</h2><p>";
+            for(var elev of arrayInn) { 
+                ut.innerHTML += elev.navn + " fikk karakteren " + elev.karakter + ".<br>"; 
+            }
+            ut.innerHTML += "</p>";
+        }
+
+        // Ekstrastoff
+        // Kor mange har 5 eller høgare?
+        var antHogMaloppnaing = 0;
+        ut.innerHTML += "<h2>Antall karakterar 5 eller høgare:</h2>";
+        ut.innerHTML += "<p>";
+        for(var elev of elevene) { 
+            if(elev.karakter >= 5){
+                antHogMaloppnaing++;
+            }
+        }
+        ut.innerHTML += "Antall karakterar med 5 eller høgare: " + antHogMaloppnaing + ".</p>";
+
+        // Eksempel på å slette eit spesifikt navn. NB: pop og liknande fungerer rett fram.
+        for (let i =0; i < elevene.length; i++) {
+            if(elevene[i].navn === "Jo Bjørnar") {
+                elevene.splice(i,1);
+                break;
+            }
+        }
+        skrivUtArray(elevene,"navn - etter sletting av Jo Bjørnar");
+
+
+    </script>
+</body>
+
+</html>
