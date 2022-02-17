@@ -7,7 +7,7 @@
 <body>
     <!-- Innhald -->
     <div id="ut">
-        
+
     </div>
 
     <!-- Kode -->
@@ -15,12 +15,42 @@
         var ut = document.getElementById("ut");
         
         var elevene = [  
-            {navn : "Amanda" , karakter : 4}, 
-			{navn : "Ole" , karakter : 3}, 
-			{navn : "Reidun" , karakter : 6}, 
-			{navn : "Jan" , karakter : 5},
+            {navn : "Amanda" ,   karakter : 4}, 
+			{navn : "Ole" ,      karakter : 3}, 
+			{navn : "Reidun" ,   karakter : 6}, 
+			{navn : "Jan" ,      karakter : 5},
             {navn : "Jo Bjarne", karakter : 2}
 		];
+
+        //ut.innerHTML = elevene[0].navn;
+        //ut.innerHTML += elevene[0].karakter;
+
+        elevene[4].navn = "Jo Bjørnar";
+
+        let nyElev = {
+            navn : "Jojo", karakter : 2
+        };
+        elevene.push(nyElev);
+
+        for(let elev of elevene) {
+            ut.innerHTML += elev.navn + " fikk karakteren " + elev.karakter + "<br>";
+        }
+        /*
+        for(let i = 0; i < elevene.length; i++) {
+            ut.innerHTML += elevene[i].navn + " fikk karakteren " + elevene[i].karakter + "<br>";
+        }
+        */
+        let sortertKarakter = elevene.slice().sort(function(a,b){
+            return a.karakter - b.karakter;
+        });
+        
+        ut.innerHTML += "<br>";
+
+        for(let elev of sortertKarakter) {
+            ut.innerHTML += elev.navn + " fikk karakteren " + elev.karakter + "<br>";
+        }
+
+        
     </script>
 </body>
 
