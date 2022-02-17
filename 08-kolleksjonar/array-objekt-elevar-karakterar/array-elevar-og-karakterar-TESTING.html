@@ -99,14 +99,17 @@
         // Ekstrastoff
         // Kor mange har 5 eller høgare?
         var antHogMaloppnaing = 0;
+        var elevarMedHog = [];
         ut.innerHTML += "<h2>Antall karakterar 5 eller høgare:</h2>";
         ut.innerHTML += "<p>";
         for(var elev of elevene) { 
             if(elev.karakter >= 5){
                 antHogMaloppnaing++;
+                elevarMedHog.push(elev);
             }
         }
         ut.innerHTML += "Antall karakterar med 5 eller høgare: " + antHogMaloppnaing + ".</p>";
+        skrivUtArray(elevarMedHog,"---");
 
         // Eksempel på å slette eit spesifikt navn. NB: pop og liknande fungerer rett fram.
         for (let i =0; i < elevene.length; i++) {
