@@ -6,7 +6,9 @@ const skryteOrd = [
 
 let setning = "Kjære Jo Bjørnar, du er ";
 
-for (let i = 0; i < 5; i++) { // Korleis byte ut 5-talet med så mange brukaren ønsker?
+let antallSkryteord = parseInt(prompt("Kor mange skryteord?"));
+
+for (let i = 0; i < antallSkryteord; i++) { // Korleis byte ut 5-talet med så mange brukaren ønsker?
     //console.log(skryteOrd[0]); // Sjå neste linje, me byter ut 0 med noko tilfeldig.
     //console.log(skryteOrd[tilfeldigTall(0,skryteOrd.length-1)]);
     // Meir lesbar kode:
