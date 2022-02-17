@@ -31,7 +31,7 @@ function skrytAv(person, antallSkryteord) {
         if (i === antallSkryteord-2) {
             skryteSetning += utvaltOrd + " ";
         }
-        else if (i === antallSkryteord-1) {
+        else if (i === antallSkryteord-2) {
             skryteSetning += " og " + utvaltOrd + ".";
         }
         else {
