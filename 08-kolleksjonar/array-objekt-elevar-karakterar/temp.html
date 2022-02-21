@@ -3,6 +3,22 @@
 <head>
     <title>Array med objekt</title>
     <meta charset="UTF-8">
+    <style>
+        table{
+            border-collapse: collapse;
+        }
+        th {
+            background-color: deepskyblue;
+            border: 1px solid #000000;
+            padding: 5px;
+            text-align: left;
+        }
+        td {
+            background-color:lightsteelblue;
+            border: 1px solid #000000;
+            padding: 5px;
+        }
+    </style>
 </head>
 <body>
     <!-- Innhald -->
@@ -27,30 +43,66 @@
 
         elevene[4].navn = "Jo Bjørnar";
 
+        // Legge til ny elev/nytt objekt, alternativ 1
         let nyElev = {
             navn : "Jojo", karakter : 2
         };
         elevene.push(nyElev);
 
+        // Alternativ 2 (legge til nytt objekt)
+        elevene.push({navn:"jojojojo",karakter:3}); // NB: Som Eirik påpeikte sist time.
+
+        ut.innerHTML = "<p>Originalarrayen:</p>";
+
+        // Gå gjennom heile arrayen og skrive ut resultat
         for(let elev of elevene) {
             ut.innerHTML += elev.navn + " fikk karakteren " + elev.karakter + "<br>";
         }
-        /*
+        /* // Alternativ måte å skrive ut på
         for(let i = 0; i < elevene.length; i++) {
             ut.innerHTML += elevene[i].navn + " fikk karakteren " + elevene[i].karakter + "<br>";
         }
         */
+
+        // Sortere arrayen på karakter. NB: No opprettar me ein ny array (sortertKarakter), og grunna bruken av slice()
+        // så blir ikkje originalarrayen (elevene) endra.
         let sortertKarakter = elevene.slice().sort(function(a,b){
             return a.karakter - b.karakter;
         });
         
-        ut.innerHTML += "<br>";
+        ut.innerHTML += "<p>Sortert:</p>";
 
         for(let elev of sortertKarakter) {
             ut.innerHTML += elev.navn + " fikk karakteren " + elev.karakter + "<br>";
         }
 
-        
+        // UTSKRIFTER (lekse frå sist)
+
+        // Versjon 1: Ein generell funksjon som tek inn arrayen og skriv den ut
+        function skrivUtArray(arrayInn,beskrivelse) {
+            let liste = "<h2>" + beskrivelse + "</h2><ul>";
+            for(var elev of arrayInn) { 
+                liste += "<li>" + elev.navn + " fikk karakteren " + elev.karakter + ".</li>"; 
+            }
+            liste += "</ul>";
+            ut.innerHTML += liste;
+        }
+
+        // Versjon 2: Ein generell funksjon som tek inn arrayen og skriv den ut på ein "finare måte"
+        function skrivUtFinArray(arrayInn) {
+            let HTMLtabell = "<table><tr><th>Elev</th><th>Karakter</th></tr>";
+            for(let elev of arrayInn) {
+                HTMLtabell += "<tr><td>" + elev.navn +  "</td><td>" + elev.karakter + "</td></tr>";
+            }
+            HTMLtabell += "</table>";
+            ut.innerHTML += "<br><br>" + HTMLtabell;
+        }
+
+        skrivUtArray(elevene,"Originalarrayen:");
+        skrivUtFinArray(elevene);
+
+
+        // OPPGÅVE: Gå gjennom, ta alle elevane med 5 eller høgare og lagre desse i ein eigen array.
     </script>
 </body>
 
