@@ -102,7 +102,42 @@
         skrivUtFinArray(elevene);
 
 
-        // OPPGÅVE: Gå gjennom, ta alle elevane med 5 eller høgare og lagre desse i ein eigen array.
+        // OPPGÅVE: Gå gjennom ta alle elevane med 5 eller høgare og 
+        // lagre desse i ein eigen array.
+        let antallOver5 = 0;
+        let eleverMedOver5 = []; 
+
+        for(let elev of elevene) {
+            if(elev.karakter >= 5) {
+                antallOver5 = antallOver5 + 1;
+                eleverMedOver5.push(elev);
+            }
+        }
+        ut.innerHTML += "<p>Antall med karakter 5 eller høgare er: " + antallOver5 + ".</p>";
+    
+        skrivUtArray(eleverMedOver5,"Elever med 5 eller høgare:");
+
+        // Alternativ måte å gå gjennom array og leite etter dei med karakter over 5.
+        antallOver5 = 0;
+        let eleverMedOver5Ny = [];
+        for(let i = 0; i < elevene.length; i++) {
+            if(elevene[i].karakter >= 5) {
+                antallOver5 += 1;
+                eleverMedOver5Ny.push(elevene[i]);
+            }
+        }
+
+        skrivUtArray(eleverMedOver5Ny,"Ny test:");
+
+        // Forsøk å slett ein elev, gitt navnet til denne:
+        let kvenSkalSlettast = prompt("Kven vil du slette?");
+        for (let i=0; i < elevene.length; i++) {
+            if(elevene[i].navn === kvenSkalSlettast) {
+                elevene.splice(i,1);
+                break;
+            }
+        }
+        skrivUtArray(elevene,"Navn - etter sletting av Jo Bjørnar");
     </script>
 </body>
 
