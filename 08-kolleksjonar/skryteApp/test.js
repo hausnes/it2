@@ -28,7 +28,7 @@ function skrytAv(person, antallSkryteord) {
         let plassering = tilfeldigTall(0,skryteOrd.length-1);
         let utvaltOrd = skryteOrd[plassering];
         skryteOrd.splice(plassering,1);
-        if(i<antallSkryteord-3) {
+        if(i<(antallSkryteord-2)) {
             skryteSetning += ", ";
         }
         else {
