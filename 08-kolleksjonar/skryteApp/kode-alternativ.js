@@ -19,40 +19,44 @@ const skryteOrd = [
     "begavet"
 ];
 
-let person = prompt("Hvem vil du skryte av?");
-let antallSkryteord = parseInt(prompt("Hvor mange skryteord?"));
+//let person = prompt("Hvem vil du skryte av?");
+//let antallSkryteord = parseInt(prompt("Hvor mange skryteord?"));
 
 function skrytAv(person, antallSkryteord) {
     let skryteSetning = "Kjære, <span class='navn'>" + person + "</span>!<br> Du er ";
-    if(antallSkryteord > skryteOrd.length) {
-        alert("Så mange fine ord har me ikkje!");
-        return;
-    }
-    else if (antallSkryteord >= 2) {
-        for (let i = 0; i < antallSkryteord; i++) {
+    if(antallSkryteord >= 3) {
+        for (let i = 0; i < antallSkryteord-2; i++) {
             let plassering = tilfeldigTall(0,skryteOrd.length-1);
             let utvaltOrd = skryteOrd[plassering];
             skryteOrd.splice(plassering,1);
-            if (i === antallSkryteord-1) {
-                skryteSetning = skryteSetning.slice(0, -2) +  " og " + utvaltOrd + "."; // NB: Fjerning av "," etter siste ord. -1 ville gitt "tomrommet"/mellomrommet.
-            }
-            else {
-                skryteSetning += utvaltOrd + ", ";
-            }
+            skryteSetning = skryteSetning + utvaltOrd + ", ";
         }
+        plassering = tilfeldigTall(0,skryteOrd.length-1);
+        let utvaltOrd1 = skryteOrd[plassering];
+        skryteOrd.splice(plassering,1);
+        
+        plassering = tilfeldigTall(0,skryteOrd.length-1);
+        let utvaltOrd2 = skryteOrd[plassering];
+        skryteOrd.splice(plassering,1);
+
+        skryteSetning = skryteSetning  + utvaltOrd1 + " og " + utvaltOrd2 + ".";
     }
     else {
         let plassering = tilfeldigTall(0,skryteOrd.length-1);
-        let utvaltOrd = skryteOrd[plassering];
+        let utvaltOrd1 = skryteOrd[plassering];
         skryteOrd.splice(plassering,1);
-        skryteSetning += "i alle fall " + utvaltOrd + ".";
+        
+        plassering = tilfeldigTall(0,skryteOrd.length-1);
+        let utvaltOrd2 = skryteOrd[plassering];
+        skryteOrd.splice(plassering,1);
+        
+        skryteSetning = skryteSetning + utvaltOrd1 + " og " + utvaltOrd2 + ".";
     }
     console.log(skryteSetning);
     document.getElementById("skrytUt").innerHTML = skryteSetning;
 }
 
-//skrytAv("Jo", 19);
-skrytAv(person, antallSkryteord);
+skrytAv("Jo Bjørnar", 7);
 
 function tilfeldigTall(min, max) {
     min = Math.ceil(min);
