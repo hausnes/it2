@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+        let str = "aabgrhaab";
+        let charMap = {};
+
+        for(let char of str) {
+            if(charMap.hasOwnProperty(char)){
+                charMap[char]++;
+            } else {
+                charMap[char] = 1;
+            }
+        }
+
+        console.log(charMap);
+
+        let setning = "abcdef";
+        console.log(setning.slice(setning[2],1));
+    </script>
+</body>
+</html>
