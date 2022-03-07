@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Set og array</title>
+</head>
+<body>
+    <h1>Sjå console.</h1>
+
+    <!-- Kode -->
+    <script>
+        // Oppgåve: Kor mange unike navn i ein array med objekt?
+        var elevene = [  
+            {navn : "Amanda" , karakter : 4}, 
+			{navn : "Ole" , karakter : 3}, 
+			{navn : "Reidun" , karakter : 6}, 
+			{navn : "Jan" , karakter : 5},
+            {navn : "Jo Bjarne", karakter : 2},
+            {navn : "Jo Bjørnar", karakter : 1},
+            {navn : "Jo Bjørnar", karakter : 1}
+		];
+
+        var elevSett = new Set();
+
+        for(let elev of elevene) {
+            elevSett.add(elev.navn);
+        }
+
+        console.log(elevSett);
+    </script>
+</body>
+</html>

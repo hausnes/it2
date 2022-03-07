@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Fargar</title>
+    </head>
+    <body>
+        <h1>Velg fargane du ynskjer å registrere</h1>
+        <input id="inpFarge" type="color">
+        <button id="knappRegistrer">Registrer farge</button>
+
+        <p>Antall registrerte fargar:</p>
+        <p id="txtUt">Ingen</p>
+        <p>Her er fargane du har valt ut:</p>
+        <ul id="liste"><li>...</li></ul>
+        
+        <script>
+            let knappRegistrer = document.getElementById("knappRegistrer");
+            let inpFarge = document.getElementById("inpFarge");
+            let txtUt = document.getElementById("txtUt");
+            let liste = document.getElementById("liste");
+            
+            let set = new Set();
+            
+            knappRegistrer.addEventListener("click", regFarge);
+            
+            function regFarge() {
+                liste.innerHTML="";
+                if(set.has(inpFarge.value)) {
+                    console.log("Fargen finnes allerede.");
+                    alert("Fargen finnes allerede.");
+                }
+                else {
+                    set.add(inpFarge.value);
+                }
+
+                txtUt.innerHTML = "Det er " + set.size + " farger som er registrert.";
+            
+                var arrFarge = Array.from(set);
+                for(let farge of arrFarge){
+                    liste.innerHTML += "<li style='color:"+farge+"';>"+farge+"</li>";
+                }
+            }
+        </script>
+    </body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Kap. 8 - Array</title>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-color: lightskyblue;
+        }
+        #midtstilt {
+            width: 650px;
+            background-color: white;
+            border: 1px solid black;
+            padding: 20px;
+            margin: 0 auto;
+        }
+    </style>
+</head>
+<body>
+    <!-- Innhald -->
+    <div id="midtstilt">
+    </div> <!-- Avslutter midtstilt -->
+
+    <!-- Kode -->
+    <script>
+        // Kolleksjonen som me skal plassere tilfeldige tal inn i
+        var tilfeldigeTal = new Set();
+
+        // Funksjonen som returnerer tilfeldige tal
+        function getRandomIntInclusive(min, max) {
+            min = Math.ceil(min);
+            max = Math.floor(max);
+            return Math.floor(Math.random() * (max - min + 1)) + min; //The maximum is inclusive and the minimum is inclusive 
+        }
+        
+        // Løkka som legg tilfeldige tal inn i kolleksjonen
+        var antallTilfeldigeTal = 10;
+
+        for(let i=1; i<=antallTilfeldigeTal; i++) {
+            console.log("Iterasjon #" + i + ":");
+            let tmpTilfeldig = getRandomIntInclusive(1,10);
+            console.log("Talet er: " + tmpTilfeldig);
+            // "add" gjer ingenting dersom data ligg der frå før. Me testar vha "has" for å kunne gje tilbakemelding om dette til brukar
+            if(tilfeldigeTal.has(tmpTilfeldig)){
+                console.log("Ups, denne eksisterte allerede i ditt Set: " + tmpTilfeldig);
+            }
+            else{
+                tilfeldigeTal.add(tmpTilfeldig);
+            }
+        }
+        
+        console.log("Størrelsen på settet er " + tilfeldigeTal.size + ".");
+        
+        var sum = 0;
+        for(tall of tilfeldigeTal){
+            console.log("tall " + tall + ".");
+            sum += tall;
+        }
+        console.log("Summen av alle tala vha for-of-løkke er " + sum + ".");
+
+        sum = 0;
+        tilfeldigeTal.forEach(utskrift);
+        function utskrift(elementet){
+            console.log("Element " + elementet + ".");
+            sum += elementet;
+        }
+        console.log("Summen av alle tala vha forEach-løkke er " + sum + ".");
+    </script>
+</body>
+
+</html>
