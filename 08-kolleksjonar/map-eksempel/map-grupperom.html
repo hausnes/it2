@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Leige av rom</title>
+    <meta charset="UTF-8">
+    <style>
+        body{
+            background-color: lightskyblue;
+        }
+        #midtstilt {
+            width: 420px;
+            padding: 20px;
+            margin: 0 auto;
+            height: auto;
+            background-color: white;
+        }
+        .grupperom {
+            width: 100px;
+            height: 100px;
+            background-color:whitesmoke;
+            color: black;
+            padding: 10px;
+            float: left;
+            margin-right: 20px;
+            display: block;
+        }
+        #samlingGrupperom{
+            height: 130px;
+        }
+
+        .resultat{
+            border: solid black 1px;
+            padding: 3px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Innhald -->
+    <div id="midtstilt">
+        <h1>Leige av rom</h1>
+        <p>Velg eit rom du ynskjer å leige.</p>
+        <p>
+            <label>Brukarnavn: <input type="text" placeholder="Ditt brukarnavn" id="inpNavn"></label>
+        </p>
+        <p>
+            <label>Søk etter rom: <input type="text" placeholder="Søk etter rom" id="inpSok"></label>
+        </p>
+        <div id="samlingGrupperom">
+            <a href="#"><div class="grupperom" id="rom1">Grupperom 1</div></a>
+            <a href="#"><div class="grupperom" id="rom2">Grupperom 2</div></a>
+            <a href="#"><div class="grupperom" id="rom3">Grupperom 3</div></a>
+        </div>
+        <div class="resultat">
+            <h3>Historikk</h3>
+            <ul id="liste">
+            </ul>
+        </div>
+        <div class="resultat">
+            <h3>Søkeresultat</h3>
+            <div id="sokeresultat"></div>
+        </div>
+    </div> <!-- Avslutter midtstilt -->
+
+    <!-- Kode -->
+    <script>
+        var rom1 = document.getElementById("rom1");
+        var rom2 = document.getElementById("rom2");
+        var rom3 = document.getElementById("rom3");
+        var liste = document.getElementById("liste");
+        var inpNavn = document.getElementById("inpNavn");
+
+        var sokeresultat = document.getElementById("sokeresultat");
+        var inpSok = document.getElementById("inpSok");
+
+        rom1.onclick = f_registrerRomLeige1;
+        rom2.onclick = f_registrerRomLeige2;
+        rom3.onclick = f_registrerRomLeige;
+
+        //var grupperom = new Set(["Rom 1", "Rom 2", "Rom 3", "Rom 4", "Rom 5"]);
+        var Rom1 = {
+            rom:"Grupperom 1",
+            str:"100",
+            leigetakar:"Ingen",
+            utstyr:"Prosjektor, 2 tavler"
+        };
+
+        var Rom2 = {
+            rom:"Grupperom 2",
+            str:"29",
+            leigetakar:"Ingen",
+            utstyr:"Ingenting"
+        };
+
+        var Rom3 = {
+            rom:"Forelesningsrom Hausnes",
+            str:"200",
+            leigetakar:"Ingen",
+            utstyr:"Prosjektor, 3 tavler"
+        };
+        
+        var romMap = new Map();
+        romMap.set(Rom1.rom,Rom1);
+        romMap.set(Rom2.rom,Rom2);
+        romMap.set(Rom3.rom,Rom3);
+        var opptatterom = new Set(); // Eit tomt Set som skal halde på dei opptatte romma
+        
+        // Eigen funksjon for når du trykker på rom 1 (HTML-elementet) og 2. Merk deg den meir generelle funksjonen som er definert etter desse
+        function f_registrerRomLeige1() {
+            if(inpNavn.value==="") {
+                alert("Du må skrive inn navnet ditt for å kunne leige rom.");
+            }
+            else { // Dersom ein har "logga inn"
+                var leigetakar = inpNavn.value;
+                console.log("Rom1.leigetakar = " + Rom1.leigetakar);
+                if(opptatterom.has("Rom 1")){
+                    console.log("Rommet var opptatt, forsøker å fjerne leigen.");
+                    if(Rom1.leigetakar==="Ingen" || Rom1.leigetakar === leigetakar){
+                        console.log("Leigetakar registrert som 'ingen' eller same som den som gjorde reservasjonen.");
+                        Rom1.leigetakar = "Ingen";
+                        opptatterom.delete("Rom 1");
+                        rom1.style.backgroundColor = "whitesmoke";
+                        liste.innerHTML += "<li>" + hentTimar() + "." + hentMinutt() + "." + hentSekund() + ": " + inpNavn.value + " har fjerna leigen på rom 1.</li>";
+                    }
+                    else{
+                        alert("Du oppretta ikkje reservasjonen, så du kan ikkje fjerne den. Logg inn som riktig brukar.");
+                        liste.innerHTML += "<li>" + hentTimar() + "." + hentMinutt() + "." + hentSekund() + ": " + inpNavn.value + " forsøkte å fjerne leiga på rom 1, men hadde ikkje tilgang.</li>";
+                    }
+                }
+                else{
+                    Rom1.leigetakar = inpNavn.value;
+                    opptatterom.add("Rom 1");
+                    rom1.style.backgroundColor = "red";
+                    liste.innerHTML += "<li>" + hentTimar() + "." + hentMinutt() + "." + hentSekund() + ": " + inpNavn.value + " har reservert rom 1.</li>";
+                }
+            }
+        }
+
+        function f_registrerRomLeige2() {
+            if(inpNavn.value==="") {
+                alert("Du må skrive inn navnet ditt for å kunne leige rom.");
+            }
+            else { // Dersom ein har "logga inn"
+                var leigetakar = inpNavn.value;
+                console.log("Rom2.leigetakar = " + Rom2.leigetakar);
+                if(opptatterom.has("Rom 2")){
+                    console.log("Rommet var opptatt, forsøker å fjerne leigen.");
+                    if(Rom2.leigetakar==="Ingen" || Rom2.leigetakar === leigetakar){
+                        console.log("Leigetakar registrert som 'ingen' eller same som den som gjorde reservasjonen.");
+                        Rom2.leigetakar = "Ingen";
+                        opptatterom.delete("Rom 2");
+                        rom2.style.backgroundColor = "whitesmoke";
+                        liste.innerHTML += "<li>" + hentTimar() + "." + hentMinutt() + "." + hentSekund() + ": " + inpNavn.value + " har fjerna leigen på rom 2.</li>";
+                    }
+                    else{
+                        alert("Du oppretta ikkje reservasjonen, så du kan ikkje fjerne den. Logg inn som riktig brukar.");
+                        liste.innerHTML += "<li>" + hentTimar() + "." + hentMinutt() + "." + hentSekund() + ": " + inpNavn.value + " forsøkte å fjerne leiga på rom 2, men hadde ikkje tilgang.</li>";
+                    }
+                }
+                else{
+                    Rom2.leigetakar = inpNavn.value;
+                    opptatterom.add("Rom 2");
+                    rom2.style.backgroundColor = "red";
+                    liste.innerHTML += "<li>" + hentTimar() + "." + hentMinutt() + "." + hentSekund() + ": " + inpNavn.value + " har reservert rom 2.</li>";
+                }
+            }
+        }
+
+        // Går det an å lage ein meir generell funksjon..?
+        function f_registrerRomLeige(evt){
+            // For testing av kva me kan finne ut om den aktuelle knappen me trykte på
+            console.log(evt.target.id);
+            console.log(evt.target);
+            // Ta dette om du ynskjer ein liten utfordring
+        }
+
+        function hentTimar(){
+            var tid = new Date();
+            var timar = tid.getHours(); // Som før
+            if(timar.toString().length < 2){ // Dersom me har eit klokkeslett som berre har eit siffer, altså når klokka er mellom 1-9, så køyrer denne...
+                return "0"+timar;
+            }
+            else{ //... ellers køyrer denne.
+                return timar;
+            }                
+        }
+        function hentMinutt(){
+            var tid = new Date();
+            var minutt = tid.getMinutes(); // Som før
+            console.log(minutt.toString().length); // For å teste kva timar.toString().length generer, brukt under utviklinga. 
+            if(minutt.toString().length < 2){ // Dersom me har eit klokkeslett som berre har eit siffer, altså når klokka er mellom 1-9, så køyrer denne...
+                return "0"+minutt;
+            }
+            else{ //... ellers køyrer denne.
+                return minutt;
+            }                
+        }
+        
+        function hentSekund(){
+            var tid = new Date();
+            var sekund = tid.getSeconds(); // Som før
+            if(sekund.toString().length < 2){
+                return "0"+sekund;
+            }
+            else {
+                return sekund;
+            }
+        }
+
+        // Viser til eksempelet i boka om moglegheit til å søke opp romma og sjå "eigenskapar" ved dette
+        inpSok.oninput = function() { //Kaller opp en anonym funksjon ved skriving i input-felt
+            var romnummer = inpSok.value; //Innskrevet personnummer
+            if(romMap.has(romnummer)) { //Sjekker om personnummeret fins
+                var rommet = romMap.get(romnummer); //Slår opp i map
+                sokeresultat.innerHTML = "<h1>" + rommet.rom + "</h1>";
+                sokeresultat.innerHTML += "<p>Størrelse: " + rommet.str + "</p>";
+                sokeresultat.innerHTML += "<p>Leigetakar: " + rommet.leigetakar + "</p>";
+                sokeresultat.innerHTML += "<p>Utstyr: " + rommet.utstyr + "</p>";
+            } else {
+                if(inpSok.value===""){
+                    sokeresultat.innerHTML = "Skriv inn eit romnummer for å søke.";
+                }
+                else {
+                    sokeresultat.innerHTML = inpSok.value + " finnes ikkje i systemet.";
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>
