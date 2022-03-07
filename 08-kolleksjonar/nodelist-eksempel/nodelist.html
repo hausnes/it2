@@ -1,0 +1,141 @@
+<!doctype html>
+<html>
+    <head>
+    <meta charset="utf-8">
+    <title>Eksperimentering med nodelist</title>
+    <style>
+        html, body { margin: 0; padding: 0;}
+        body {
+            height: 100%; /* Setter høyden til 100 % */
+            width: 100%;
+        }
+        .red {
+            position: absolute;
+            background-color: red;
+        }
+        .green {
+            position: absolute;
+            background-color: green;
+        }
+        .blue {
+            position: absolute;
+            background-color: blue;
+        }
+        .yellow {
+            position: absolute;
+            background-color: yellow;
+        }
+    </style>
+    </head>
+    <body>
+        <button id="btnRod">Skjul rød</button>
+        <button id="btnGronn">Skjul grønn</button>
+        <button id="btnBla">Skjul blå</button>
+        <button id="btnGul">Skjul gul</button>
+        
+        <script>
+            var btnRod=document.getElementById("btnRod");
+            var btnGronn=document.getElementById("btnGronn");
+            var btnBla=document.getElementById("btnBla");
+            var btnGul=document.getElementById("btnGul");
+            
+            // Teiknar først opp
+            var antallElement = 120;
+            for(var i=0; i<antallElement;i++){
+                var div = document.createElement("div");
+                if(i<antallElement*0.25){
+                    div.className="red";
+                }
+                else if(i<antallElement*0.5){
+                    div.className="green";
+                }
+                else if(i<antallElement*0.75){
+                    div.className="yellow";
+                }
+                else{
+                    div.className="blue";
+                }
+                document.body.appendChild(div);
+            }
+
+            var divRod = document.getElementsByClassName("red");
+            divRod = Array.from(divRod); //Gjør om nodelist til array
+            var divGronn = document.getElementsByClassName("green");
+            divGronn = Array.from(divGronn); //Gjør om nodelist til array
+            var divBla = document.getElementsByClassName("blue");
+            divBla = Array.from(divBla); //Gjør om nodelist til array
+            var divGul = document.getElementsByClassName("yellow");
+            divBla = Array.from(divGul); //Gjør om nodelist til array
+
+            function scramble() {
+                for(var divElement of divRod) {
+                    divElement.style.width = Math.random() * 30 + "px";
+                    divElement.style.height = Math.random() * 30 + "px";
+                    divElement.style.left = Math.random() * (innerWidth-30) + "px";
+                    divElement.style.top = Math.random() * (innerHeight-30) + "px";
+                }
+                for(var divElement of divGronn) {
+                    divElement.style.width = Math.random() * 30 + "px";
+                    divElement.style.height = Math.random() * 30 + "px";
+                    divElement.style.left = Math.random() * (innerWidth-30) + "px";
+                    divElement.style.top = Math.random() * (innerHeight-30) + "px";
+                }
+                for(var divElement of divBla) {
+                    divElement.style.width = Math.random() * 30 + "px";
+                    divElement.style.height = Math.random() * 30 + "px";
+                    divElement.style.left = Math.random() * (innerWidth-30) + "px";
+                    divElement.style.top = Math.random() * (innerHeight-30) + "px";
+                }
+                for(var divElement of divGul) {
+                    divElement.style.width = Math.random() * 30 + "px";
+                    divElement.style.height = Math.random() * 30 + "px";
+                    divElement.style.left = Math.random() * (innerWidth-30) + "px";
+                    divElement.style.top = Math.random() * (innerHeight-30) + "px";
+                }
+            }
+            
+            scramble(); 
+
+            btnRod.onclick=function(){
+                var divSaml = document.getElementsByTagName("div");
+                divSaml = Array.from(divSaml);
+                for(var div of divSaml){
+                    if(div.className=="red"){div.style.background="white";}
+                    else if(div.className=="green"){div.style.background="green";}
+                    else if(div.className=="yellow"){div.style.background="yellow";}
+                    else if(div.className=="blue"){div.style.background="blue";}
+                } 
+            }
+            btnGronn.onclick=function(){
+                var divSaml = document.getElementsByTagName("div");
+                divSaml = Array.from(divSaml);
+                for(var div of divSaml){
+                    if(div.className=="red"){div.style.background="red";}
+                    else if(div.className=="green"){div.style.background="white";}
+                    else if(div.className=="yellow"){div.style.background="yellow";}
+                    else if(div.className=="blue"){div.style.background="blue";}
+                } 
+            }
+            btnBla.onclick=function(){
+                var divSaml = document.getElementsByTagName("div");
+                divSaml = Array.from(divSaml);
+                for(var div of divSaml){
+                    if(div.className=="red"){div.style.background="red";}
+                    else if(div.className=="green"){div.style.background="green";}
+                    else if(div.className=="yellow"){div.style.background="yellow";}
+                    else if(div.className=="blue"){div.style.background="white";}
+                } 
+            }
+            btnGul.onclick=function(){
+                var divSaml = document.getElementsByTagName("div");
+                divSaml = Array.from(divSaml);
+                for(var div of divSaml){
+                    if(div.className=="red"){div.style.background="red";}
+                    else if(div.className=="green"){div.style.background="green";}
+                    else if(div.className=="yellow"){div.style.background="white";}
+                    else if(div.className=="blue"){div.style.background="blue";}
+                } 
+            }
+        </script>
+    </body>
+</html>
