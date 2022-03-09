@@ -1,0 +1,23 @@
+body{
+    background-color: lightskyblue;
+}
+#midtstilt {
+    width: 80%;
+    margin: 0 auto;
+}
+
+#utElevBoksar {
+    display: flex;
+    flex-wrap: wrap; /* Når det ikkje er plass til fleire element så hoppar det til neste linje. */
+}
+
+.elev {
+    border: black solid 1px;
+    background-color: white;
+    padding: 10px;
+    margin: 10px;
+}
+
+.biletTilpassing {
+    width: 150px;
+}

@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>createElement - eksempel</title>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="eks2-createElement.css">
+    </head>
+    <body>
+        <!-- HTML -->
+        <div id="midtstilt">
+            <h1>Oversikt over elevar</h1>
+            <div id="utElevBoksar">
+            
+            </div>
+            <h1>Dynamisk select-element (dropdown)</h1>
+            <div id="utSelect">
+
+            </div>
+        </div><!-- Avslutter midtstilt -->
+
+        <!-- Kode -->
+        <script> 
+            // Elementet som skal innehalde alle elevane frå lista
+            var utElevBoksar = document.getElementById("utElevBoksar");
+
+            var elevene = [  
+                {navn : "Amanda" , karakter : 4}, 
+                {navn : "Ole" , karakter : 3}, 
+                {navn : "Reidun" , karakter : 6}, 
+                {navn : "Jan" , karakter : 5},
+                {navn : "Jo Bjarne", karakter : 2},
+                {navn : "Svada Bada" , karakter : 5},
+                {navn : "Rada Bada" , karakter : 5},
+                {navn : "Hada Pa Bada" , karakter : 5},
+                {navn : "Rompa Stompa" , karakter : 1},
+                {navn : "Hopp Hipp" , karakter : 2}
+            ];
+
+            // Oppgåve til deg: Legg til meir informasjon i kolleksjonen "elevene", og utvid koden under. Spesielt ynskjer eg at du legg til bileter for kvar elev.
+
+            // Oppretting av HTML, basert på kolleksjonen over
+            var i = 0;
+            for(let elev of elevene) {
+                // Ein div-boks som skal innehalde info om elev
+                var nyDiv = document.createElement("div");
+                nyDiv.className = "elev";
+
+                // Overskrift for eleven (navn)
+                var nyOverskrift = document.createElement("h1");
+                nyOverskrift.innerHTML = "Elev: " + elev.navn;
+
+                // Bilete av eleven
+                var nyttBilete = document.createElement("img");
+                nyttBilete.src = "bileter/" + i + ".jpg";
+                nyttBilete.className = "biletTilpassing";
+                i++;
+                
+                // Paragraf med info om eleven (karakter)
+                var nyParagraf = document.createElement("p");
+                nyParagraf.innerHTML = "Karakter: " + elev.karakter;
+                
+                // Legg til overskrift og paragraf til den nye DIV-boksen
+                nyDiv.appendChild(nyOverskrift);
+                nyDiv.appendChild(nyttBilete);
+                nyDiv.appendChild(nyParagraf);
+
+                // Legg den nye DIV-boksen til i riktig plass i HTML (DOM)
+                document.getElementById("utElevBoksar").appendChild(nyDiv);
+            }
+
+            // Oppretting av select-element, basert på kolleksjonen over
+            var nySelect = document.createElement("select");
+            var hovudtekst = document.createElement("option");
+            hovudtekst.innerHTML = "Velg person:";
+            nySelect.appendChild(hovudtekst);
+            
+            // Handterer at den første delen av select-elementet ikkje skal kunne brukast, anna enn til info ved oppstart
+            nySelect.options[0].disabled = true;
+            nySelect.options[0].selected = true;
+            //nySelect.options[0].hidden = true;
+
+            for(let elev of elevene){
+                var nyttValg = document.createElement("option");
+                nyttValg.value = elev.navn;
+                nyttValg.innerHTML = elev.navn;
+                nySelect.appendChild(nyttValg);
+            }
+
+            var utSelect = document.getElementById("utSelect")
+            utSelect.appendChild(nySelect);
+
+            // Handtere å bruke select-elementet
+            utSelect.onchange = brukeSelect;
+
+            function brukeSelect(evt){
+                console.log("evt.target.value: " + evt.target.value);
+            }
+        </script>
+    </body>
+</html>
