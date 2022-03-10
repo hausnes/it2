@@ -1,12 +1,12 @@
 // Meir om map: https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Map
 // Objekter, som frå når me jobba med arrays med objekt
-var klausKu = {
+let klausKu = {
     pnr: "003",
     navn: "Klaus Ku",
     adresse: "Kvegfaret 12 B"
 };
 
-var tassen = {
+let tassen = {
     pnr: "002",
     navn: "Tassen",
     adresse: "Kjøttbeinstien 19"
@@ -23,6 +23,7 @@ console.log("Størrelse på mapDyr: " + mapDyr.size);
 console.log("\nInnhald i mapDyr: ");
 for (let dyr of mapDyr){
     console.log(dyr);
+    //alert(dyr);
 }
 
 // Utvalte deler frå kvart objekt i mapDyr
