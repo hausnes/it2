@@ -109,10 +109,19 @@
             evt.preventDefault();
             let elev = document.getElementById("inpElevSlett").value;
 
-            // NB: Treng du ein meir avansert og "moderne" måte å gjere det på? Les meir: https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array-contains-an-object-with-an-attribute-that-e
-            // Berre lagt opp til testing her.
+            // Går gjennom kolleksjonen og leitar etter ein gitt elev, slettar (splice) om den blir funnen
+            for (let i = 0; i < elevene.length; i++) {
+                    if(elevene[i].navn === elev) {
+                        elevene.splice(i,1);
+                        break;
+                    }
+            }
+            skrivUtTab(elevene);
+
+            // NB: Treng du ein meir avansert og "moderne" måte å gjere det på? Les meir: https://stackoverflow.com/questions/8217419/how-to-determine-if-javascript-array-contains-an-object-with-an-attribute-that-e 
+            /*
             if (elevene.some(e => e.navn === elev)) {
-                console.log("Fant brukaren.");
+                console.log("Fant brukaren."); // TO-DO: Dei resterande linjene kan no effektiviserast.
                 // Sjølve slettinga skjer her! Slik me har vore gjennom i timane.
                 for (let i = 0; i < elevene.length; i++) {
                     if(elevene[i].navn === elev) {
@@ -125,6 +134,7 @@
             else {
                 console.log("Fant ikkje brukaren.");
             }
+            */
         }
 
         // Utskrift av HTML-tabell. NB: Legg merke til CSS-innstillingane.
