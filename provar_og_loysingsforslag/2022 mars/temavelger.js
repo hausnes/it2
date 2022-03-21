@@ -36,7 +36,7 @@ function registrerTema(evt) {
     let nyFargeUtheva   = document.getElementById("fargeUtheva").value;
     console.log("Nytt tema: " + nyFargeTekst + ", " + nyFargeBakgrunn + ", " + nyFargeUtheva);
     
-    customNr++;
+    customNr++; // customNr = customNr + 1;
     let temanavn = "custom" + customNr; // Første custom temanavn blir custom1, andre blir custom2 osv.
 
     let nyttTema = {
@@ -52,7 +52,7 @@ function registrerTema(evt) {
     let nyttValg = document.createElement("option");
     nyttValg.value = temaSamling.length-1;
     nyttValg.innerHTML = temanavn;
-    nyttValg.name = temanavn;
+    //nyttValg.name = temanavn;
     document.getElementById("selectTemavelger").appendChild(nyttValg);
     alert("Du har lagt til eit nytt tema med navn: " + temanavn + ". Endre til dette i dropdown.");
 }
