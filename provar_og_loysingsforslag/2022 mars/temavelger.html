@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tema-velgjer</title>
+    <style>
+        html, body { width: 100%; height: 100%; margin: 0; padding: 0; }
+        body { display: flex; justify-content: center; align-items: center; flex-direction: column; }
+        div { width: 600px; background-color: black; color: white; padding: 1em; margin-top: 1em; border: 1px solid black; }
+        h2 { padding: 1em; background-color: red; color: yellow; }
+        form { padding: 1em; border: 2px solid black; }
+        select { padding: 1em; margin-bottom: 1em; }
+        button { padding: 0.5em; }
+    </style>
+</head>
+<body>
+    <select name="temavelger" id="selectTemavelger">
+        <option name="dark"  value="0">Dark (standard)</option>
+        <option name="light" value="1">Light</option>
+    </select>
+
+    <form id="registrerTema">
+        <label for="fargeTekst">Tekstfarge</label>
+        <input id="fargeTekst" type="color" value="#ffffff" required>
+        <label for="fargeBakgrunn">Bakgrunnsfarge</label>
+        <input id="fargeBakgrunn" type="color" value="000000" required>
+        <label for="fargeUtheva">Utheva</label>
+        <input id="fargeUtheva" type="color" value="#ffff00" required>
+        <button type="submit">Registrer tema</button>
+    </form>
+
+    <!-- Dette er delen du skal gjere stilendringar på. -->
+    <div id="boks">
+        <h1>Eksempeloverskrift</h1>
+        <p>
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Culpa laboriosam modi, tempora non, 
+            repellendus aspernatur placeat quam explicabo veniam recusandae odio sed nostrum saepe pariatur 
+            ab quo possimus soluta! Doloribus!
+        </p>
+        <h2>Varsel</h2>
+    </div>
+    <!-- Ferdig med delen du skal gjere stilendringar på. -->
+
+    <script>
+        let temaSamling = [ // temaSamling har som standardverdi desse to, fleire kan bli lagt til
+            { navn: "dark",   fargeTekst : "#ffffff", fargeBakgrunn : "#000000", fargeUtheva : "#ffff00" },
+            { navn: "light",  fargeTekst : "#000000", fargeBakgrunn : "#ffffff", fargeUtheva : "#0fff00" }
+        ];
+
+        /*
+            ***************************************************************
+            Dropdown/select/nedtrykksmeny og den faktiske endringa av tema:
+            ***************************************************************
+        */
+        document.getElementById("selectTemavelger").addEventListener("change", endreTema);
+
+        function endreTema(evt) {
+            console.log("Endra til temanummer: " + evt.target.value);
+            let valtTema = parseInt(evt.target.value);
+
+            document.getElementById("boks").style.color = temaSamling[valtTema].fargeTekst;
+            document.getElementById("boks").style.backgroundColor = temaSamling[valtTema].fargeBakgrunn;
+            document.querySelector("h2").style.color = temaSamling[valtTema].fargeUtheva;
+        }
+
+        /*
+            ***************************************************************
+            Registrering av eit nytt tema inn i kolleksjonen, samt 
+            oppdatering av dropdown/select/nedtrykksmenyen:
+            ***************************************************************
+        */
+        document.getElementById("registrerTema").addEventListener("submit", registrerTema);
+
+        let customNr = 0; // Brukes for å handtere å gje nye automatiske navn til nye tema (custom1, custom2 osv.)
+
+        function registrerTema(evt) {
+            evt.preventDefault();
+            let nyFargeTekst    = document.getElementById("fargeTekst").value;
+            let nyFargeBakgrunn = document.getElementById("fargeBakgrunn").value;
+            let nyFargeUtheva   = document.getElementById("fargeUtheva").value;
+            console.log("Nytt tema: " + nyFargeTekst + ", " + nyFargeBakgrunn + ", " + nyFargeUtheva);
+           
+            customNr++;
+            let temanavn = "custom" + customNr; // Første custom temanavn blir custom1, andre blir custom2 osv.
+
+            let nyttTema = {
+                navn: temanavn,
+                fargeTekst: nyFargeTekst,
+                fargeBakgrunn: nyFargeBakgrunn,
+                fargeUtheva: nyFargeUtheva
+            };
+            temaSamling.push(nyttTema); // Legg nye data til i kolleksjonen
+            console.table(temaSamling); // Snedig utskrift, lenke: https://www.youtube.com/watch?v=qkCwhNkA7dU&list=WL&index=25
+
+            // Legg til nytt element i dropdown/select/nedtrykksmeny:
+            let nyttValg = document.createElement("option");
+            nyttValg.value = temaSamling.length-1;
+            nyttValg.innerHTML = temanavn;
+            nyttValg.name = temanavn;
+            document.getElementById("selectTemavelger").appendChild(nyttValg);
+            alert("Du har lagt til eit nytt tema med navn: " + temanavn + ". Endre til dette i dropdown.");
+        }
+    </script>
+</body>
+</html>
