@@ -10,9 +10,9 @@ let temaSamling = [ // temaSamling har som standardverdi desse to, fleire kan bl
 */
 document.getElementById("selectTemavelger").addEventListener("change", endreTema); // Eventuelt xxx.onchange = endreTema;
 
-function endreTema(evt) {
-    console.log("Endra til temanummer: " + evt.target.value); 
-    let valtTema = parseInt(evt.target.value); // Eventuelt Number(evt.target.value);
+function endreTema() {
+    let valtTema = document.getElementById("selectTemavelger").value;
+    console.log("Endra til temanummer: " + valtTema); 
 
     document.getElementById("boks").style.color = temaSamling[valtTema].fargeTekst;
     document.getElementById("boks").style.backgroundColor = temaSamling[valtTema].fargeBakgrunn;
