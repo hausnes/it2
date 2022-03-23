@@ -10,7 +10,7 @@ body {
     align-items: center; 
     flex-direction: column; 
 }
-div { 
+#boks { 
     width: 600px; 
     background-color: black; 
     color: white; 
