@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>JSON, filmbutikk</title>
+        <style>
+            .filmer{
+                width: 400px;
+                float: left;
+            }
+            .handlekurv{
+                width: 400px;
+                float: left;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="filmer">
+            <h1>Våre filmer</h1>
+            <table><tbody id="tblFilmer"></tbody></table>
+        </div>
+        <div class="handlekurv">
+            <h1>Handlekurv</h1>
+            <table><tbody id="tblHandlekurv"></tbody></table>
+            <p id="txtPris"></p>
+        </div>
+        <script src="json-filmbutikk-data.js"></script>
+        <script>
+        var tblFilmer = document.getElementById("tblFilmer");
+        var tblHandlekurv = document.getElementById("tblHandlekurv");
+        var txtPris = document.getElementById("txtPris");
+        var filmer = new Map(); //En tom map for filmene
+        var kjopteFilmer = new Map(); //En tom map for handlekurven
+        for(var film of filmbutikken.filmer) { //Traverserer og legger alle filmene fra arrayet inn i map
+            filmer.set(film.id, film); //Legger filmen inn i map med film.id som nøkkel
+        }
+        for(var film of filmer.values()) { //Traverserer og legger alle filmene inn i HTML-tabellen
+            tblFilmer.innerHTML += `<tr>
+            <td><img src="${film.poster}" width="200px"></td>
+            <td>${film.tittel}</td>
+            <td><button onclick="kjop('${film.id}')">Kjøp</button></td>
+            </tr>`;
+        }
+        function visHandlekurv() {
+            tblHandlekurv.innerHTML = ""; //Nuller ut handlekurven
+            for(var film of kjopteFilmer.values()) {
+                tblHandlekurv.innerHTML += //Bygger handlekurven
+                `<tr><td><img src="${film.poster}" width="200px"></td>
+                <td>${film.tittel} <b>kr ${film.pris}</b></td>
+                <td><button onclick="slett('${film.id}')">x</button></td></tr>`;
+            }
+            beregnPris(); //Beregner prisen på varene i handlekurven
+        }
+        function slett(filmID) {
+            kjopteFilmer.delete(filmID);
+            visHandlekurv(); //Passer på å oppdatere handlekurven
+        }
+        function kjop(filmID) {
+            console.log(filmID);
+            var kjoptFilm = filmer.get(filmID);
+            console.log(kjoptFilm);
+            kjopteFilmer.set(filmID, kjoptFilm);
+            visHandlekurv(); //Oppdaterer handlekurven
+        }
+        function beregnPris() {
+            var pris = 0;
+            for (var film of kjopteFilmer.values()) {
+                pris += film.pris;
+            }
+            txtPris.innerHTML = `Sum: kr ${pris}`;
+        }
+        </script>
+    </body>
+</html>
