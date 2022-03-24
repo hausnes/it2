@@ -45,7 +45,7 @@
             }
             
             for(var film of filmer.values()) { //Traverserer og legger alle filmene inn i HTML-tabellen
-                tblFilmer.innerHTML += `<tr>
+                tblFilmer.innerHTML += `<tr> // Husk at dette hermeteiknet betyr template string og gjer at me kan skrive over fleire linjer
                 <td><img src="${film.poster}" width="200px"></td>
                 <td>${film.tittel}</td>
                 <td><button onclick="kjop('${film.id}')">Kjøp</button></td>
