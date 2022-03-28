@@ -41,6 +41,7 @@
             var kjopteFilmer = new Map(); //En tom map for handlekurven
             
             for(var film of filmbutikken.filmer) { //Traverserer og legger alle filmene fra arrayet inn i map
+                console.log(film.tittel);
                 filmer.set(film.id, film); //Legger filmen inn i map med film.id som nøkkel
             }
             
