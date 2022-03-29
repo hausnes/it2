@@ -5,7 +5,7 @@ let brukarar = [];
 const getUsers = async () => { // async
     const response = await fetch("https://randomuser.me/api/?results=5"); // await
     const json = await response.json(); // await
-    users = json.results;
+    let users = json.results;
     // return users;
     leggTilBrukarar(users);
 }

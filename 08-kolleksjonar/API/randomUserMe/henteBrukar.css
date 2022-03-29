@@ -1,19 +1,25 @@
+html, body {
+    margin: 0;
+    padding: 0;
+    font-family: sans-serif;
+    width: 100%;
+    height: 100%;
+}
+
 #brukarar {
+    height: 100vh;
     display: flex;
     flex-wrap: wrap;
     justify-content: space-around;
     align-items: center;
-    margin: 0 auto;
-    width: 100%;
-    padding: 0.5rem;
 }
 
 .brukar {
     width: 100%;
     max-width: 300px;
     margin: 0.5rem;
-    padding: 0.5rem;
-    border: 1px solid #ccc;
+    padding: 2em;
+    border: 2px solid #ccc;
     border-radius: 5px;
     box-shadow: 0 0 5px #ccc;
 }
