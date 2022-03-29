@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script src="test.json"></script>
+    <script>
+        console.log("Starter...");
+        const getUsers = async () => { // async
+            console.log("Køyrer async-funksjon.");
+            const response = await fetch("test.json"); // await
+            const json = await response.json(); // await
+            users = json.results;
+            // return users;
+            console.log(users);
+        }
+
+        getUsers();
+    </script>
+</body>
+</html>

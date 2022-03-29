@@ -1,0 +1,14 @@
+[
+    {
+      'name': 'Aragorn',
+      'race': 'Human'
+    },
+    {
+      'name': 'Legolas',
+      'race': 'Elf'
+    },
+    {
+      'name': 'Gimli',
+      'race': 'Dwarf'
+    }
+];
