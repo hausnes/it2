@@ -26,11 +26,16 @@ for (let dyr of mapDyr){
     //alert(dyr);
 }
 
-// Utvalte deler frå kvart objekt i mapDyr
-console.log("\nUtvalte deler frå mapDyr: ");
+// Utvalte deler frå kvart objekt i mapDyr, både ved å bruke keys og values som iterator
+console.log("\nUtvalte deler frå mapDyr (keys): ");
 for (let nokkel of mapDyr.keys()){
     let dyr = mapDyr.get(nokkel);
     console.log(dyr.pnr + ": " + dyr.navn);
+}
+
+console.log("\nUtvalte deler frå mapDyr (values): ");
+for (let verdi of mapDyr.values()){
+    console.log(verdi.pnr + ": " + verdi.navn);
 }
 
 // Korleis registrere ein ny kandidat frå ei nettside, til dømes? Sjå på koden frå t.d. påskerenn.
