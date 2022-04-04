@@ -2,8 +2,10 @@
 
 var request = new XMLHttpRequest();
 request.open('GET', 'https://randomuser.me/api/?results=1', true);
+request.send();
+request.onload = skrivUtData;
 
-request.onload = function () { // Køyrer først når data er mottatt frå nettsida
+function skrivUtData() { // Køyrer først når data er mottatt frå nettsida
 	var data = JSON.parse(this.response);
 	console.log(data); // Test for å sjå kva data me får inn
 	
@@ -15,4 +17,10 @@ request.onload = function () { // Køyrer først når data er mottatt frå netts
 	}
 }
 
-request.send();
+// Kunne no hatt ein knapp som kalla på funksjonen skrivUtData() i tillegg.
+document.getElementById("hent").addEventListener("click", function(){
+    var request = new XMLHttpRequest();
+    request.open('GET', 'https://randomuser.me/api/?results=1', true);
+    request.send();
+    request.onload = skrivUtData;
+});
