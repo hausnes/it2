@@ -25,7 +25,7 @@ async function hentBrukarar() {
 
 hentBrukarar();
 
-async function leggTilBrukarar(users) {
+function leggTilBrukarar(users) {
     for(let user of users) {
         console.log(user.name.title + " " + user.name.last);
         let nyBruker = {
