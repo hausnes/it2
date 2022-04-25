@@ -1,0 +1,23 @@
+main {
+    padding: 1em;
+    background-color: white;
+    width: 600px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+body {
+    background-color: rgb(215, 215, 255);
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+html, body {
+    width: 100%;
+    height: 100%;
+}

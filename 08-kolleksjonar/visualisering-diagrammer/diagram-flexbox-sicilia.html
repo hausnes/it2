@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <style>
+            #chart { /*CSS-stil til flexbox*/
+                display: flex;
+                width: 600px;
+                height: 300px;
+                flex-direction: row;
+                align-items: flex-end;
+            }
+            #chart > div { /*CSS-stil til flex items*/
+                background-color: DarkSeaGreen;
+                margin: 5px;
+                flex-grow: 1;
+                text-align: center;
+                color: white;
+                font-family: arial, verdana, sans-serif;
+            }
+        </style>
+    </head> 
+    <body>
+        <div id="chart"><!-- Fylles med data fra array med temperaturer --></div>
+        <script>
+            var chart = document.getElementById("chart");
+            var temperaturer = [16, 16, 18, 21, 25, 30, 33, 33, 30, 25, 20, 17];
+            
+            function finnMaks() {
+                var maks = -Infinity;
+                for(var temp of temperaturer) { // Traverserer temperaturene
+                    if(temp > maks) {
+                        maks = temp;
+                    }
+                }
+                return maks;
+            }
+            function tegnStolper() { //Oppretter stolpene
+                var maks = finnMaks();
+                for(var temp of temperaturer) {
+                    var prosent = temp / maks * 100;
+                    chart.innerHTML += "<div style='height:" + prosent + "%'>" + temp + "</div>";
+                    /* Alternativ: 
+                    chart.innerHTML += `<div style="height: ${prosent}%">
+                    ${temp}</div>`;
+                    */
+                }
+            }
+            tegnStolper();
+        </script>
+    </body>
+</html>

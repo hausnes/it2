@@ -1,0 +1,64 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Kakediagram</title>
+    </head>
+    <body>
+        <form id="regFarge">
+            <input id="inpFarge" type="text" required placeholder="Farge">
+            <input id="inpAntall" type="number" required placeholder="Antall som liker denne best">
+            <button type="submit">Legg inn farge</button>
+        </form>
+        <canvas id="chart" width="300" height="300"></canvas>
+        
+        <!-- Kode -->
+        <script>
+            var regFarge = document.getElementById("regFarge");
+            var inpFarge = document.getElementById("inpFarge");
+            var inpAntall = document.getElementById("inpAntall");
+            var chart = document.getElementById("chart");
+            var ctx = chart.getContext("2d");
+            function graderTilRadianer(grader) {
+                return Math.PI * grader / 180;
+            }
+            var favoritter = [
+                {farge: "blue", antall: 20},
+                {farge: "yellow", antall: 20}
+            ]; 
+            function finnSum() { //Må finne summen hver gang vi registrerer
+                var sum = 0;
+                for (var favoritt of favoritter) {
+                    sum += favoritt.antall;
+                }
+                return sum;
+            }
+            function tegnKake() {
+                var sum = finnSum(); //Kaller opp funksjonen for å finne summen
+                var startvinkel = -90; //Starter på -90 grader (rett opp)
+                ctx.clearRect(0, 0, 300, 300); //Fjerner alt før vi tegner opp på nytt
+                for(var favoritt of favoritter) {
+                    var vinkel = favoritt.antall * 360 / sum;
+                    ctx.fillStyle = favoritt.farge;
+                    ctx.beginPath(); //Begynner å trekke opp formen på kakestykket
+                    ctx.moveTo(150, 150); //Til sentrum
+                    ctx.arc(150, 150, 140, graderTilRadianer(startvinkel), graderTilRadianer(startvinkel + vinkel));
+                    ctx.closePath();
+                    ctx.fill();
+                    startvinkel += vinkel;
+                }
+            }
+            regFarge.onsubmit = function(evt) {
+                evt.preventDefault(); //Passer på at vi ikke oppdaterer siden
+                var nyFarge = inpFarge.value;
+                var nyttAntall = Number(inpAntall.value); //Gjør om tekst til tall
+                favoritter.push({farge: nyFarge, antall: nyttAntall}); //Legger inn i arrayet
+                inpFarge.value = ""; //Nuller ut inputfelt
+                inpAntall.value = "";
+                inpFarge.focus(); //Setter fokus så vi er klare for ny registrering
+                tegnKake(); //Tegner opp kaken med nye data
+                }
+
+            tegnKake(); // Kaller på denne ved oppstart sidan eg har lagt inn nokre test-, eller start-data.
+        </script>
+    </body>
+</html>
