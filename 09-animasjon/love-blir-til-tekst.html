@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Løve til tekst, og omvendt</title>
+        <style>
+            .container {
+                position: relative;
+                width: 400px;
+                height: 280px;
+                background-color: LightGray;
+                border: 14px solid white; /*Pynteramme*/
+                box-shadow: 0 0 1px DarkGray; /*Skygge rundt rammen*/
+                overflow: hidden; /*Skjuler innhold som havner på utsiden*/
+            }
+            .container > img { /*CSS til img-elementet som er inni div-elementet*/
+                position: absolute;
+                transform: scale(1); /*Bildet er 100 % skalert*/
+                transition: 0.5s 0.5s; /*En overgang varer i 0.5s og har 0.5s forsinkelse*/
+            }
+            .container > article {/*Teksten om løven*/
+                position: absolute;
+                width: 80%; /*Bredden er satt til 80 % siden padding til sammen er 20 %*/
+                height: 80%;
+                padding: 10%; /*Legger til rom fra kantene av et element og inn til innholdet*/
+                background-color: black; /* Bakgrunnsfarge */
+                color: white; /* Tekstfarge */
+                text-align: center; /*Midtstiller teksten*/
+                transform: scale(0); /*Teksten er skalert til 0 % og er ikke synlig*/
+                transition: 0.5s 0s;
+            }
+            .container:hover > img { /*Animasjonen starter når markøren kommer over div-elementet*/
+                transform: scale(0); /*Skalerer bildet ned til 0 */
+                transition: 0.5s 0s; /*Animasjonen starter med en gang*/
+            }
+            .container:hover > article {/*Animasjonen starer når markøren kommer over div-elementet*/
+                transform: scale(1); /*Skalerer teksten opp til 100 %*/
+                transition: 0.5s 0.5s; /*Det går et halvt sekund, så skaleres teksten*/
+            }
+            a, a:hover, a:visited {
+                color: white;
+            }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <img src="bileter/lion.jpg" width="400px">
+            <article class="infoTekst">
+                <h1>Løven</h1>
+                <hr>
+                <p>Løven er et et sosialt kattedyr som tilhører slekten brølekatter (Panthera) </p>
+                <a href="#">Les mer</a>
+            </article>
+        </div>
+    </body>
+</html>

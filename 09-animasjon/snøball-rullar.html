@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Snøball rullar bortover</title>
+        <style> body {
+            padding: 150px;
+        }
+        </style>
+    </head>
+    <body>
+        <img src="bileter\snowball.png" id="snowball">
+        <script>
+            var snowball = document.getElementById("snowball");
+            var antRull = 2;
+            snowball.animate([
+                {transform: "rotate(0deg)" , marginLeft: "10px"}, //Før animasjonen
+                {transform: "rotate(1440deg)" , marginLeft: "500px"} //Etter animasjonen
+            ], {
+                duration: 3000, //Varighet 3000 millisekunder
+                direction: "alternate", //Går annenhver gang fram og tilbake
+                iterations: antRull, // "Infinity" lar den fortsette i det uendelige
+                easing: "ease-in-out" //Tar det rolig i starten og på slutten
+            });
+        </script>
+    </body>
+</html>

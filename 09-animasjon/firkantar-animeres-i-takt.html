@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Firkanter som animeres i takt</title>
+        <style>
+           body {background-color: saddlebrown;}
+           div {float: left; width: 20px; height: 10px; margin-right: 5px;
+           background-color: goldenrod;}
+        </style>
+    </head>
+    <body>
+	<div></div><div></div><div></div><div></div><div></div><div></div><div></div><div>
+        </div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>
+        <div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div>   
+    <script>
+        var divs = document.getElementsByTagName("div"); //Refererer til alle div-elementer
+        divs = Array.from(divs); //Gjør om fra nodeliste til array
+        var animasjon = [
+            {transform: 'translateY(0px)', opacity: 1}, //translateY endrer y-posisjon
+            {transform: 'translateY(200px)', opacity: 0} //Senker elementene 200px og gjør dem gjennomsiktige
+        ];
+        var kontrollobjekt = {duration: 1000, direction: 'alternate', iterations: Infinity, easing: 'ease-in-out'};
+        divs.forEach(function(elem, indeks) { //For hver div
+            kontrollobjekt.delay = indeks * 100; //Forsinkelsen økes med 100 ms per animasjon
+            elem.animate(animasjon, kontrollobjekt);
+        });
+        window.onclick = function() { //Snur retningen ved klikk i nettleservinduet
+            var animasjoner = document.timeline.getAnimations(); //Alle animasjoner
+            for (var animasjon of animasjoner) { //For hver animasjon…
+                animasjon.reverse(); //snur vi retningen
+            }
+        };
+    </script>        
+    </body>
+</html>

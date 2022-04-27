@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>En firkant som vokser seg større</title>
+        <style>
+            @keyframes skaler {
+                from {
+                    width: 10px;
+                    height: 10px;
+                }
+                to {
+                    width: 200px;
+                    height: 200px;
+                }
+            }
+            div {
+                 width: 10px;
+                 height: 10px;
+                 background-color: darkkhaki;
+                 animation: skaler 2s;
+                 animation-direction: alternate;
+                 animation-iteration-count: infinite;
+            }
+
+        </style>
+    </head>
+    <body>
+        <div></div><!-- Et tomt div-element -->
+    </body>
+</html>

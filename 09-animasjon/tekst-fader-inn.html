@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tekst fader inn</title>
+    </head>
+    <body>
+        <span id="hilsen">Hei på deg</span>
+        <script>
+            var hilsen = document.getElementById("hilsen"); //Refererer til span-elementet
+            hilsen.animate( [{opacity:0}, {opacity: 1}], 2000); //Fra usynlig til synlig på 2 sekunder
+        </script>        
+    </body>
+</html>

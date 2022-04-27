@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Synkronisere to snøballar</title>
+    </head>
+    <body>
+        <button id="btnUtakt">Utakt</button>
+        <button id="btnSynk">Synkroniser</button>
+        <img src="bileter\snowball.png" id="ball01" width="200px">
+        <img src="bileter\snowball.png" id="ball02" width="200px">
+        
+        <script>
+            var ball01 = document.getElementById("ball01");
+            var ball02 = document.getElementById("ball02");
+            var btnUtakt = document.getElementById("btnUtakt");
+            var btnSynk = document.getElementById("btnSynk");
+            var animasjon = [
+                {transform: 'rotate(0deg)'},
+                {transform: 'rotate(360deg)'}
+            ];
+            var kontrollobjekt = {
+                duration: 1000,
+                iterations: Infinity,
+                easing: 'ease'
+            };
+            var minAnimasjon1 = ball01.animate(animasjon, kontrollobjekt);
+            var minAnimasjon2 = ball02.animate(animasjon, kontrollobjekt);
+            btnUtakt.onclick = function() {
+                minAnimasjon2.currentTime = 200;
+            };
+            btnSynk.onclick = function() {
+                minAnimasjon2.currentTime = minAnimasjon1.currentTime;
+            };
+        </script>       
+    </body>
+</html>

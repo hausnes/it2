@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Tegne rundinger i nettleseren</title>
+        <style>
+            /*Gjør elementet rundt*/
+            .runding {width: 30px; height: 30px; background-color: plum; position: absolute; border-radius: 50%;}
+        </style>
+    </head>
+    <body>
+	<input type="color" value="#DDA0DD" id="inpFarge">  
+    <script>
+        var inpFarge = document.getElementById("inpFarge"); //Fargevelger
+        inpFarge.onclick = function(evt) { //Klikk på fargevelgeren
+            evt.stopPropagation(); //Forhindrer at klikket forplanter seg
+        };
+        function forsvinn(evt) { //Fader ut og fjerner rundingen
+            evt.stopPropagation();
+            var runding = evt.target; //target er målet for klikket
+            var animasjon = runding.animate([{opacity: 1}, {opacity: 0}], 500);
+            animasjon.onfinish = function() { //Når animasjonen er ferdig,…
+                document.body.removeChild(runding); //fjernes rundingen
+            }
+        }
+        window.onclick = function(evt) {
+            var runding = document.createElement("div"); //Lager et div-element
+            runding.className = "runding"; //Setter klassenavn til runding
+            runding.style.left = evt.clientX - 15 + "px"; //x-sentrum der vi klikker
+            runding.style.top = evt.clientY - 15 + "px"; //y-sentrum der vi klikker
+            runding.style.background = inpFarge.value; //Setter farge
+            document.body.appendChild(runding); //Legger runding til i body
+            runding.animate([{opacity: 0}, {opacity: 1}], 500); //Fader inn
+            runding.onclick = forsvinn; //Når vi klikker igjen, skal rundingen fjernes
+        }
+    </script>        
+    </body>
+</html>

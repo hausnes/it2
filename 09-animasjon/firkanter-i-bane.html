@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Firkant som beveger seg i en bane</title>
+        <style>
+            @keyframes flytt {
+                0% {left: 20px; top: 30px;}
+                10% {left: 600px; top: 80px;}
+                50% {left: 400px; top: 300px;}
+                75% {left: 90px; top: 240px;}
+                100% {left: 20px; top: 30px;}
+            }
+            .firkant {/* animasjonen flytt varer i 8s og repeteres uendelig*/
+                width: 20px; height: 20px; background-color: darkgrey; position:
+                absolute; animation: flytt 8s infinite;
+            }
+            #f2 { animation-delay: 0.1s; opacity: 0.9; }
+            #f3 { animation-delay: 0.2s; opacity: 0.8; }
+            #f4 { animation-delay: 0.3s; opacity: 0.7; }
+            #f5 { animation-delay: 0.4s; opacity: 0.6; }
+            #f6 { animation-delay: 0.5s; opacity: 0.5; }
+            #f7 { animation-delay: 0.6s; opacity: 0.4; }
+            #f8 { animation-delay: 0.7s; opacity: 0.3; }
+            #f9 { animation-delay: 0.8s; opacity: 0.2; }
+            #f10 { animation-delay: 0.9s; opacity: 0.1; }
+        </style>
+    </head>
+    <body>
+        <div class="firkant" id="f1"></div>
+        <div class="firkant" id="f2"></div>
+        <div class="firkant" id="f3"></div>
+        <div class="firkant" id="f4"></div>
+        <div class="firkant" id="f5"></div>
+        <div class="firkant" id="f6"></div>
+        <div class="firkant" id="f7"></div>
+        <div class="firkant" id="f8"></div>
+        <div class="firkant" id="f9"></div>
+        <div class="firkant" id="f10"></div>
+    </body>
+</html>
