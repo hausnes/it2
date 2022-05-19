@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Å animere en bil som kjører</title>
+        <style>
+            /*Flytter bilen fra et stykke til venstre for boksen, først til midten. Etter 30 % er bilen 60 piksler fra venstre kant av boksen*/
+            @keyframes flyttBil {
+                0% {left: -600px;}
+                30% {left: 60px;}
+                80% {left: 60px;}
+                100% {left: 800px;}
+            }
+            @keyframes flyttBilV2 {
+                0% {left: -600px;}
+                100% {left: 1200px;}
+            }
+            /*Får hjulene til først å gå to ganger rundt samtidig med at bilen flytter seg
+            inn til midten. Deretter står hjulene stille helt til bilen igjen begynner å
+            flytte seg*/
+            @keyframes snurrHjul {
+                0% {transform: rotate(0deg);}
+                30% {transform: rotate(720deg);}
+                80% {transform: rotate(720deg);}
+                100% {transform: rotate(1440deg);}
+            }
+            @keyframes snurrHjulV2 {
+                0% {transform: rotate(0deg);}
+                100% {transform: rotate(720deg);}
+            }
+            /*Boksen med bakgrunnsbildet bak bilen*/
+            #container {
+                width: 650px;
+                height: 400px;
+                background-image: url(bileter/bgr.png);
+                position: relative; /*Bilen og hjulene blir plassert i forhold til denne boksen*/
+                overflow: hidden; /*Bilen vises ikke når den er utenfor boksen*/
+            }
+            /*Bakgrunnsbilde av en bil. Bildet har koden absolutt, og vi knytter animasjonen flyttBil til bilen. Vi sørger for at bildet går i loop med koden infinite*/
+            #bil {
+                background-image: url(bileter/bilen.png);
+                width: 531px;
+                height: 172px;
+                position: absolute;
+                left: -600px;
+                top: 180px;
+                animation: flyttBil 10s infinite;
+            }
+            /*Bakgrunnsbilde av hjulene. Setter samme tid (10 s) for animasjonen av hjulene som for bilen*/
+            #bakhjul {
+                position: absolute;
+                background-image: url(bileter/bakhjul.png);
+                width: 58px;
+                height: 58px;
+                left: 76px;
+                top: 100px;
+                animation: snurrHjul 10s infinite;
+            }
+            #forhjul {
+                position: absolute;
+                background-image: url(bileter/forhjul.png);
+                width: 58px;
+                height: 58px;
+                left: 414px;
+                top: 100px;
+                animation: snurrHjul 10s infinite;
+            }
+        </style>
+    </head>
+    <body>
+        <div id="container">
+            <div id="bil"> <!-- Bilen ligger inne i et div-element -->
+                <div id="bakhjul"></div> <!-- Hjulene ligger inne i bilen -->
+                <div id="forhjul"></div>
+            </div>
+        </div>
+    </body>
+</html>

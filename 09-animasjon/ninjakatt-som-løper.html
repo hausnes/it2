@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Ninjakatt</title>
+        <style>
+            #ninjakatt {
+                width: 213px;
+                height: 213px;
+                background-image: url(bileter/ninjakatt.png);
+            }
+        </style>
+    </haed>
+    <body>
+        <div id="ninjakatt"></div>
+        <script>
+            var animasjonKatt = [
+                {backgroundPosition: "0 0"},
+                {backgroundPosition: "-1280px 0"}
+            ];
+            var innstillingerKatt = {
+                duration: 750,
+                iterations: Infinity,
+                easing: "steps(6)"
+            };
+            var ninjakatt = document.getElementById("ninjakatt");
+            var player = ninjakatt.animate(animasjonKatt, innstillingerKatt);
+        </script>
+    </body>
+</html>

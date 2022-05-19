@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>La brukeren rotere et div-element</title>
+        <style>
+            body {
+                padding: 50px;
+            }
+            #vektstang {
+                width: 300px;
+                height: 30px;
+                padding: 10px;
+                margin-bottom: -20px; /* For at det skal bli ein del overlapping ml. vektstang og stamme (ikkje mellomrom) */
+                background-color: firebrick;
+                transform-origin: center bottom;
+                transition: 2s; /* Endringer skal ta to sekund */
+                margin-top: 100px;
+                color: white;
+            } 
+            #stamme {
+                width: 50px;
+                height: 300px;
+                background-color: firebrick;
+                margin-left: 138px;
+            }
+        </style>
+    </head>
+    <body>
+        <form id="frmGjett">
+            <input type="number" id="inpKalori1" placeholder="Kalorinivå, vare 1">
+            <input type="number" id="inpKalori2" placeholder="Kalorinivå, vare 2">
+            <button type="submit">Forblir du sunn?</button>
+        </form>
+        <div id="vektstang">Basert på kaloriinntaket, korleis ligg du an?</div>
+        <div id="stamme"></div>
+    </body>
+    <script>
+        var frmGjett = document.getElementById("frmGjett");
+        var inpKalori = document.getElementById("inpVekt");
+        var vektstang = document.getElementById("vektstang");
+        frmGjett.onsubmit = function(evt) {
+            evt.preventDefault();
+            var kalorimengde1 = Number(inpKalori1.value); //Gjør om tekst-input til tall
+            var kalorimengde2 = Number(inpKalori2.value); //Gjør om tekst-input til tall
+            vekt = kalorimengde1 + kalorimengde2;
+            if(vekt >= 1600 && vekt <= 1750) {
+                vektstang.style.transform = "rotate(0deg)";
+                vektstang.innerHTML = "Perfekt, du opprettheld balansen.";
+            }
+            else if(vekt < 1600) {
+                vektstang.style.transform = "rotate(-20deg)";
+                vektstang.innerHTML = "Perfekt, du tek av nokre kilo.";
+            }
+            else if(vekt > 1750) {
+                vektstang.style.transform = "rotate(20deg)";
+                vektstang.innerHTML = "Perfekt, du legg på deg litt.";
+            }
+            else {
+                vektstang.style.transform = "rotate(90deg)";
+            }
+        }
+    </script>
+</html>

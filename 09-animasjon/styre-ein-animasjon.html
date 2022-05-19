@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Starte, stoppe og snu en animasjon</title>
+        <style>
+            .knapper {text-align: center; margin-top: 100px;}
+            .firkant {width: 20px; height: 20px; background-color: DarkOrange;
+            border-radius: 4px; position: absolute;}
+        </style>
+    </head>
+    <body>
+		<div class="knapper">
+			<button id="btnStart">Start</button>
+			<button id="btnPause">Pause</button>
+			<button id="btnRevers">Snu</button>
+		</div>
+        <div class="firkant" id="firkant"></div>
+    <script>
+        var btnStart = document.getElementById("btnStart");
+        var btnPause = document.getElementById("btnPause");
+        var btnRevers = document.getElementById("btnRevers");
+        var firkant = document.getElementById("firkant");
+        var minAnimasjon = firkant.animate([ // AnimationPlayer
+            {left: "10px", top: "10px"},
+            {left: (innerWidth - 30) + "px", top: "10px"},
+            {left: (innerWidth - 30) + "px", top: (innerHeight - 30) + "px"},
+            {left: "10px", top: (innerHeight - 30) + "px"},
+            {left: "10px", top: "10px"}
+        ],{
+            duration: 4000,
+            iterations: Infinity
+        });
+        btnStart.onclick = function() {
+            minAnimasjon.play(); //Starter animasjonen igjen hvis den er satt på pause
+        };
+        btnPause.onclick = function() {
+            minAnimasjon.pause(); //Setter animasjonen på pause
+        };
+        btnRevers.onclick = function() {
+            minAnimasjon.reverse(); //Snur retningen på animasjonen
+        }; 
+    </script>
+        
+    </body>
+</html>

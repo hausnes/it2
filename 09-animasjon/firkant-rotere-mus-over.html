@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Å rotere et div-element</title>
+        <style>
+            @keyframes snurr {
+                from {transform: rotate(0deg);}
+                to {transform: rotate(360deg);}
+            }
+            @keyframes snurrFort {
+                from {transform: rotate(0deg);}
+                to {transform: rotate(720deg);}
+            }
+            #firkant {
+               width: 100px;
+               height: 100px;
+               background-color: sandybrown;
+               margin: 150px auto; /*Litt margin til toppen og like mye på begge sider*/
+               animation-name: snurr;
+               animation-duration: 5s;
+               animation-iteration-count: infinite; /*Uendelig mange repetisjoner*/
+               animation-timing-function: linear; /*Firkanten skal rotere med jevn hastighet*/
+               animation-play-state: paused; /*Står stille helt til vi fører musemarkøren over den*/
+            }
+            #firkant:hover { /*hover-tilstand, når vi fører musemarkøren over div-elementet…*/
+                animation-play-state: running; /*setter vi i gang animasjonen*/
+            }
+        </style>
+    </head>
+    <body>
+        <div id="firkant"></div>
+    </body>
+</html>

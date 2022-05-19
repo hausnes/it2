@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="no">
+    <head>
+        <meta charset="UTF-8">
+        <title>Rotere et p-element om nedre venstre hjørne - animering</title>
+        <style>
+            p {
+                width:300px;
+                height:30px;
+                padding: 10px;
+                background-color: LimeGreen;
+                transform-origin: left bottom;
+                transform: rotate(0deg);
+                transition: 1s;
+            }
+            p:active { /*Animasjonen går når vi klikker og holder musemarkøren nede*/
+                transform: rotate(30deg);
+            }
+        </style>
+    </head>
+    <body>
+        <p>Jeg er rotert og animert!</p>
+    </body>
+</html>
