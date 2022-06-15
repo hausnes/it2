@@ -31,5 +31,35 @@
         <div></div>
         <div></div>
     </main>
+
+    <script>
+        const divs = document.querySelectorAll('div');
+        
+        // Alternativ 1
+        divs.forEach(element => {
+            element.style.backgroundColor = 'blue';
+            endreFarge(element, 'blue');
+            endreStørrelse(element, 150);
+        });
+        // Alternativ 2
+        /*
+        for(let i = 0; i < divs.length; i++) {
+            divs[i].style.backgroundColor = 'green';
+        }
+        // Alternativ 3
+        for(let div of divs) {
+            div.style.backgroundColor = 'yellow';
+        }
+        */
+
+        function endreFarge(element, farge) {
+            element.style.backgroundColor = farge;
+        }
+
+        function endreStørrelse(element, størrelse) {
+            element.style.width = størrelse + 'px';
+            element.style.height = størrelse + 'px';
+        }
+    </script>
 </body>
 </html>

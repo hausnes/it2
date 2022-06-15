@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="no">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Statistikk for verdata</title>
+    <style>
+        main {
+            display: flex;
+            flex-direction: column;
+            
+            justify-content: space-around;
+            height: 100vh;
+            flex-wrap: wrap;
+        }
+        div {
+            width: 200px;
+            height: 200px;
+            padding: 1em;
+            border: 1px solid black;
+        }
+
+        .low {
+            background-color: #87efff;
+            padding: 1rem;
+        }
+    </style>
+</head>
+<body>
+    <main id="utskrift">
+
+    </main>
+
+    <script src="verdata.js"></script>
+    <script>
+        // Finne lågaste temperatur
+        let low = Infinity; // For å ta vare på lågaste verdi. low er til å byrje med uendeleg høg, og antakelsen er då at me finn noko som er lågare i talmaterialet.
+        let lowAllInfo = [];
+        for (let verpunkt of ver.verdataBergen) {
+            if(Number(verpunkt.temperaturLow) < low) {
+                low = Number(verpunkt.temperaturLow);
+                lowAllInfo[0] = verpunkt;
+            }
+            //console.log(verpunkt);
+        }
+        for (let verpunkt of ver.verdataVoss) {
+            if(Number(verpunkt.temperaturLow) < low) {
+                low = Number(verpunkt.temperaturLow);
+                lowAllInfo[0] = verpunkt;
+            }
+            //console.log(verpunkt);
+        }
+        console.log("Lågaste funne verdi: " + low);
+        console.log("All informasjon om dagen med lågaste registrerte verdi:")
+        console.table(lowAllInfo);
+        for (verdi of lowAllInfo) {
+            utskrift.innerHTML += `
+                <div>
+                    <h3>${verdi.id}</h3>
+                    <p> Veke: ${verdi.veke}</p>
+                    <p> ${returnerVekedagBasertPåDagnummer(verdi.temperaturLow)}</p>
+                    <p class="low"> Lågaste temperatur: ${verdi.temperaturLow}</p>
+                    <p> Høgaste temperatur: ${verdi.temperaturHigh}</p>
+                </div>
+            `;
+        }
+
+        function returnerVekedagBasertPåDagnummer(vekedag) {
+            switch(vekedag) {
+                case 1:
+                    return "Mandag";
+                case 2:
+                    return "Tirsdag";
+                case 3:
+                    return "Onsdag";
+                case 4:
+                    return "Torsdag";
+                case 5:
+                    return "Fredag";
+                case 6:
+                    return "Lørdag";
+                case 7:
+                    return "Søndag";
+            }
+        }
+
+        for (let i = 0; i < ver.verdataBergen.length; i++) {
+            
+            let verpunkt = ver.verdataBergen[i];
+            let utskrift = `
+                <div>
+                    <h2>${verpunkt.id}</h2>
+                    <p> ${verpunkt.veke}</p>
+                    <p> ${verpunkt.dag}</p>
+                    <p> ${verpunkt.temperaturLow}</p>
+                    <p> ${verpunkt.temperaturHigh}</p>
+                </div>
+            `;
+            document.querySelector("#utskrift").innerHTML += utskrift;
+        }
+
+        function summerNedbørsmengdeForVeke(veke) {
+            let sum = 0;
+            for (let i = 0; i < ver.verdataBergen.length; i++) {
+                let verpunkt = ver.verdataBergen[i];
+                if (verpunkt.veke == veke) {
+                    sum += Number(verpunkt.nedbørsmengde);
+                }
+            }
+            return sum;
+        }
+
+        let sum
+
+        let nyeData = {
+            "id" : "Rumpeldunk",
+            "veke" : 3,
+            "dag" : 1, 
+            "nedbørsmengde" : "3000"
+        };
+        ver.verdataBergen.push(nyeData);
+        console.log(ver.verdataBergen);
+    </script>
+</body>
+</html>
