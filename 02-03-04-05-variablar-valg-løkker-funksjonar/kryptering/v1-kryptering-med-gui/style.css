@@ -10,3 +10,7 @@ body{
 .storTekstboks{
     width: 300px;
 }
+
+#inputKrypteringsnokkel{
+    width: 70px;
+}
